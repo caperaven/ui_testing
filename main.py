@@ -33,3 +33,8 @@ while True:
         break
 
     test_runner.run_test(json, results)
+
+# clean up memory by disposing of instances
+del test_runner
+del test_logger
+del test_loader
