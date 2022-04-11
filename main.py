@@ -1,16 +1,35 @@
-# This is a sample Python script.
+# Command line arguments
+# ------ Files --------------
+# --file c:\\tests\\test.json
+# --file ./../tests/test.json
+# ------ Folders --------------
+# --folder c:\\tests
+# --file ./../tests
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from src.test_loader import TestLoader
+from src.test_runner import TestRunner
+from src.test_logger import TestLogger
 
+# Test loader is responsible for:
+# 1. discovering
+# 2. loading
+# 3. dishing
+# of test files based on commandline arguments
+test_loader = TestLoader()
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Test logger prints the current test progress based on the number of tests running
+test_logger = TestLogger(len(test_loader.files))
 
+# Test runner executes json intent and populate the results file
+test_runner = TestRunner(test_logger)
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# this will hold the test results
+results = {}
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# loop through the tests and execute them
+while True:
+    json = test_loader.next_test()
+    if json is None:
+        break
+
+    test_runner.run_test(json, results)

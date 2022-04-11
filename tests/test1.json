@@ -1,0 +1,25 @@
+{
+  "id": "standard test 1",
+
+  "navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000"
+  },
+  "set first name": {
+    "action"  : "type_text",
+    "id"      : "edtFirstName",
+    "value"   : "John"
+  },
+  "set last name": {
+    "action"  : "type_text",
+    "id"      : "edtLastName",
+    "value"   : "Doe"
+  },
+  "set age": {
+    "action"  : "type_text",
+    "id"      : "edtAge",
+    "value"   : 30
+  }
+}
+
+
