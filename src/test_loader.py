@@ -10,6 +10,9 @@ class TestLoader:
         self.load_folder()
         self.next_index = 0
 
+    """
+    get file from cmd, if exists, add to tests files to execute
+    """
     def load_file(self):
         if "--file" in sys.argv:
             index = sys.argv.index("--file")
@@ -21,6 +24,9 @@ class TestLoader:
                 file = os.path.join(os.path.dirname(__file__), file)
                 self.files.append(os.path.realpath(file))
 
+    """
+    for a given folder, if defined, get the files tests files to execute    
+    """
     def load_folder(self):
         if "--folder" in sys.argv:
             index = sys.argv.index("--folder")
@@ -37,6 +43,10 @@ class TestLoader:
                 for file in files:
                     self.files.append(os.path.join(folder, file))
 
+    """
+    call this function to load the next test file as JSON and pass back the JSON object
+    if you are at the end and there is nothing more to execute, return None
+    """
     def next_test(self):
         if self.next_index > len(self.files) - 1:
             return None
