@@ -1,7 +1,7 @@
 from selenium import webdriver
-from actions.navigate import navigate
-from actions.type import type_text
-from assertions.assert_value_eq import assert_value_eq
+from src.actions.navigate import navigate
+from src.actions.type import type_text
+from src.assertions.assert_value_eq import assert_value_eq
 
 class TestRunner:
     def __init__(self, logger):
