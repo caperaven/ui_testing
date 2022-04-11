@@ -19,6 +19,21 @@
     "action"  : "type_text",
     "id"      : "edtAge",
     "value"   : 30
+  },
+  "check first name value": {
+    "action"  : "assert_value_eq",
+    "id"      : "edtFirstName",
+    "value"   : "John"
+  },
+  "check last name value": {
+    "action"  : "assert_value_eq",
+    "id"      : "edtLastName",
+    "value"   : "Doe"
+  },
+  "check age value": {
+    "action"  : "assert_value_eq",
+    "id"      : "edtAge",
+    "value"   : 33
   }
 }
 

@@ -1,6 +1,7 @@
 from selenium import webdriver
 from actions.navigate import navigate
 from actions.type import type_text
+from assertions.assert_value_eq import assert_value_eq
 
 class TestRunner:
     def __init__(self, logger):
@@ -18,23 +19,29 @@ class TestRunner:
     def run_test(self, json, results):
         self.logger.step(json["id"])
 
+        test_results = results[json["id"]] = {}
+
         for step_name in json:
             if step_name == "id":
                 continue
+            else:
+                step = json[step_name]
+                action = step["action"]
+                step["step"] = step_name
 
-            step = json[step_name]
-            action = step["action"]
-
-            self_attr = getattr(self, action, None)
-            if callable(self_attr):
-                self_attr(step)
+                self_attr = getattr(self, action, None)
+                if callable(self_attr):
+                    self_attr(step, test_results)
 
 
-    def navigate(self, args):
-        navigate(self.driver, args)
+    def navigate(self, step, results):
+        navigate(self.driver, step, results)
 
-    def type_text(self, args):
-        type_text(self.driver, args)
+    def type_text(self, step, results):
+        type_text(self.driver, step, results)
+
+    def assert_value_eq(self, step, results):
+        assert_value_eq(self.driver, step, results)
 
 
 

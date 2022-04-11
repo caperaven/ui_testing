@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-def type_text(driver, args):
+def type_text(driver, args, results):
     element = None
 
     value = args["value"]
@@ -14,3 +14,5 @@ def type_text(driver, args):
 
     WebDriverWait(driver, 10).until(EC.visibility_of(element))
     element.send_keys(value)
+
+    results[args["step"]] = "success"
