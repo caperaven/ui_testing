@@ -9,6 +9,8 @@
 from src.test_loader import TestLoader
 from src.test_runner import TestRunner
 from src.test_logger import TestLogger
+from src.results_writer import save_results
+import os
 
 # Test loader is responsible for:
 # 1. discovering
@@ -31,10 +33,11 @@ while True:
     json = test_loader.next_test()
     if json is None:
         break
-
     test_runner.run_test(json, results)
 
-print(results)
+folder = os.path.join(os.path.dirname(__file__), "test_results")
+
+save_results(results, folder)
 
 # clean up memory by disposing of instances
 del test_runner
