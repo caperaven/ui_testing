@@ -10,6 +10,12 @@
     "action"  : "type_text",
     "id"      : "edtNotThere",
     "value"   : "not there"
+  },
+
+  "check age is not zero": {
+    "action"  : "assert_value_neq",
+    "id"      : "edtNotThere",
+    "value"   : 0
   }
 }
 

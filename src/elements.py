@@ -20,7 +20,7 @@ def get_element(driver, args, results):
         WebDriverWait(driver, 10).until(EC.visibility_of(element))
 
     except Exception:
-        set_error(results, args["step"], "element '{}' not found".format(name))
+        set_error(results, args["step"], "error: element '{}' not found".format(name))
         pass
 
     return element
@@ -28,4 +28,8 @@ def get_element(driver, args, results):
 
 def get_value(driver, args, results):
     element = get_element(driver, args, results)
+
+    if element is None:
+        return None
+
     return element.get_attribute("value")

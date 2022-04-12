@@ -6,6 +6,9 @@ def assert_value_eq(driver, args, results):
     exp_value = args["value"]
     value = get_value(driver, args, results)
 
+    if value is None:
+        return
+
     if str(exp_value) == str(value):
         results[args["step"]] = "success"
     else:
@@ -15,6 +18,9 @@ def assert_value_eq(driver, args, results):
 def assert_value_neq(driver, args, results):
     exp_value = args["value"]
     value = get_value(driver, args, results)
+
+    if value is None:
+        return
 
     if str(exp_value) == str(value):
         set_error(results, args["step"], "error: value should not be {}".format(value))
