@@ -34,6 +34,11 @@
     "action"  : "assert_value_eq",
     "id"      : "edtAge",
     "value"   : 33
+  },
+  "check age is not zero": {
+    "action"  : "assert_value_neq",
+    "id"      : "edtAge",
+    "value"   : 0
   }
 }
 

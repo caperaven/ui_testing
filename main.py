@@ -33,7 +33,9 @@ while True:
     json = test_loader.next_test()
     if json is None:
         break
-    test_runner.run_test(json, results)
+
+    file = test_loader.current_test_file()
+    test_runner.run_test(json, results, file)
 
 folder = os.path.join(os.path.dirname(__file__), "test_results")
 

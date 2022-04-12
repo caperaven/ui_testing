@@ -1,0 +1,16 @@
+{
+  "id": "standard test 2",
+
+  "navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000"
+  },
+
+  "set fake element": {
+    "action"  : "type_text",
+    "id"      : "edtNotThere",
+    "value"   : "not there"
+  }
+}
+
+

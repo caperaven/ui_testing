@@ -1,7 +1,8 @@
 from selenium import webdriver
 from src.actions.navigate import navigate
 from src.actions.type import type_text
-from src.assertions.assert_value_eq import assert_value_eq
+from src.assertions.assert_value import assert_value_eq, assert_value_neq
+
 
 class TestRunner:
     def __init__(self, logger):
@@ -16,10 +17,17 @@ class TestRunner:
     """
     fun the given test's steps and update the results object
     """
-    def run_test(self, json, results):
+
+    def run_test(self, json, results, file):
         self.logger.step(json["id"])
 
-        test_results = results[json["id"]] = {}
+        test_results = results[json["id"]] = {
+            "summary": {
+                "file": file,
+                "success": True,
+                "error_count": 0
+            }
+        }
 
         for step_name in json:
             if step_name == "id":
@@ -33,7 +41,6 @@ class TestRunner:
                 if callable(self_attr):
                     self_attr(step, test_results)
 
-
     def navigate(self, step, results):
         navigate(self.driver, step, results)
 
@@ -42,3 +49,6 @@ class TestRunner:
 
     def assert_value_eq(self, step, results):
         assert_value_eq(self.driver, step, results)
+
+    def assert_value_neq(self, step, results):
+        assert_value_neq(self.driver, step, results)
