@@ -2,6 +2,7 @@ from selenium import webdriver
 from src.actions.navigate import navigate
 from src.actions.type import type_text
 from src.assertions.assert_value import assert_value_eq, assert_value_neq
+from src.wait.components import wait_is_ready
 
 
 class TestRunner:
@@ -15,9 +16,8 @@ class TestRunner:
         self.driver = None
 
     """
-    fun the given test's steps and update the results object
+    run the given test's steps and update the results object
     """
-
     def run_test(self, json, results, file):
         self.logger.step(json["id"])
 
@@ -52,3 +52,6 @@ class TestRunner:
 
     def assert_value_neq(self, step, results):
         assert_value_neq(self.driver, step, results)
+
+    def wait_is_ready(self, step, results):
+        wait_is_ready(self.driver, step, results)

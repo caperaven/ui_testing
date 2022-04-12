@@ -16,6 +16,12 @@
     "action"  : "assert_value_neq",
     "id"      : "edtNotThere",
     "value"   : 0
+  },
+
+  "wait for component to load": {
+    "action"  : "wait_is_ready",
+    "query"   : "custom-component",
+    "timeout" : 1
   }
 }
 
