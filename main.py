@@ -4,7 +4,7 @@
 # --file ./../tests/test.json
 # ------ Folders --------------
 # --folder c:\\tests
-# --file ./../tests
+# --folder ./../tests
 
 from src.test_loader import TestLoader
 from src.test_runner import TestRunner

@@ -42,28 +42,3 @@ class TestRunner:
 
     def assert_value_eq(self, step, results):
         assert_value_eq(self.driver, step, results)
-
-
-
-# from selenium import webdriver
-# from selenium.webdriver.support.ui import WebDriverWait
-# from selenium.webdriver.support import expected_conditions as EC
-# from selenium.webdriver.common.by import By
-# from selenium.common.exceptions import TimeoutException
-# from actions_map import actions
-#
-# driver = webdriver.Chrome()
-# actions["navigate"](driver, url="http://127.0.0.1:8000/#mdc")
-#
-#
-# # try:
-# #     WebDriverWait(driver, 3).until(EC.visibility_of((By.TAG_NAME, "h2")))
-# #     print("page is ready")
-# # except TimeoutException:
-# #     print("page timed out")
-#
-# driver.quit()
-#
-# ## Outstanding
-# ## How do I debug my test.
-# ## Result Log
