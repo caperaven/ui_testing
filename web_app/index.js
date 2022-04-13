@@ -11,7 +11,7 @@ document.getElementById("btnSetAttribute").addEventListener("click", () => {
 document.getElementById("btnSetStyle").addEventListener("click", () => {
     const timeout = setTimeout(() => {
         clearTimeout(timeout);
-        target.style.background = "gray";
+        target.style.padding = "1rem";
         document.getElementById("btnSetText").removeAttribute("disabled");
     }, 1);
 })

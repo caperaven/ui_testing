@@ -6,6 +6,7 @@ from src.actions.click import click
 # assertions
 from src.assertions.assert_value import assert_value_eq, assert_value_neq
 from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq
+from src.assertions.assert_css import assert_style_eq, assert_style_neq
 # components
 from src.wait.components import wait_is_ready
 
@@ -71,3 +72,9 @@ class TestRunner:
 
     def wait_is_ready(self, step, results):
         wait_is_ready(self.driver, step, results)
+
+    def assert_style_eq(self, step, results):
+        assert_style_eq(self.driver, step, results)
+
+    def assert_style_neq(self, step, results):
+        assert_style_neq(self.driver, step, results)

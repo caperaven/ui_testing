@@ -23,11 +23,11 @@
     "id": "btnSetStyle"
   },
 
-  "assert data-active is true": {
+  "assert padding is 1rem": {
     "action": "assert_style_eq",
     "id": "target",
-    "property": "background",
-    "value": "gray"
+    "property": "padding",
+    "value": "16px"
   },
 
   "set text": {
