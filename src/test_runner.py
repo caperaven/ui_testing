@@ -8,8 +8,9 @@ from src.assertions.assert_value import assert_value_eq, assert_value_neq
 from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq
 from src.assertions.assert_css import assert_style_eq, assert_style_neq
 from src.assertions.assert_text import assert_text_eq, assert_text_neq
+from src.assertions.assert_property import assert_property_eq, assert_property_neq
 # components
-from src.wait.components import wait_is_ready
+from src.wait.components import wait_is_ready, wait_for_attribute
 
 class TestRunner:
     def __init__(self, logger):
@@ -74,6 +75,9 @@ class TestRunner:
     def wait_is_ready(self, step, results):
         wait_is_ready(self.driver, step, results)
 
+    def wait_for_attribute(self, step, results):
+        wait_for_attribute(self.driver, step, results)
+
     def assert_style_eq(self, step, results):
         assert_style_eq(self.driver, step, results)
 
@@ -85,3 +89,9 @@ class TestRunner:
 
     def assert_text_neq(self, step, results):
         assert_text_neq(self.driver, step, results)
+
+    def assert_property_eq(self, step, results):
+        assert_property_eq(self.driver, step, results)
+
+    def assert_property_neq(self, step, results):
+        assert_property_neq(self.driver, step, results)

@@ -5,7 +5,7 @@ document.getElementById("btnSetAttribute").addEventListener("click", () => {
         clearTimeout(timeout);
         target.setAttribute("data-active", "true");
         document.getElementById("btnSetStyle").removeAttribute("disabled");
-    }, 1);
+    }, 1000);
 })
 
 document.getElementById("btnSetStyle").addEventListener("click", () => {
@@ -13,7 +13,7 @@ document.getElementById("btnSetStyle").addEventListener("click", () => {
         clearTimeout(timeout);
         target.style.padding = "1rem";
         document.getElementById("btnSetText").removeAttribute("disabled");
-    }, 1);
+    }, 1000);
 })
 
 document.getElementById("btnSetText").addEventListener("click", () => {
@@ -21,12 +21,12 @@ document.getElementById("btnSetText").addEventListener("click", () => {
         clearTimeout(timeout);
         target.textContent = "Test"
         document.getElementById("btnSetProperty").removeAttribute("disabled");
-    }, 1);
+    }, 1000);
 })
 
 document.getElementById("btnSetProperty").addEventListener("click", () => {
     const timeout = setTimeout(() => {
         clearTimeout(timeout);
         target.myProperty = "Test"
-    }, 1);
+    }, 1000);
 })

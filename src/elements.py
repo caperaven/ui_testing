@@ -23,25 +23,7 @@ def get_element(driver, args, results):
         set_error(results, args["step"], "error: element '{}' not found".format(name))
         pass
 
-    return element
-
-
-def get_value(driver, args, results):
-    element = get_element(driver, args, results)
-
     if element is None:
-        return None
+        set_error(results, args["step"], "error: element '{}' not found".format(name))
 
-    return element.get_attribute("value")
-
-
-def get_css_property_value(driver, args, results):
-    element = get_element(driver, args, results)
-    prop = args["property"]
-    return element.value_of_css_property(prop)
-
-
-def get_property(driver, args, results):
-    element = get_element(driver, args, results)
-    prop = args["property"]
-    return element.get_property(prop)
+    return element

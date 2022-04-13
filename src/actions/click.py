@@ -7,6 +7,9 @@ from src.wait.conditions import _is_enabled_condition
 def click(driver, args, results):
     element = get_element(driver, args, results)
 
+    if element is None:
+        return
+
     try:
         WebDriverWait(driver, 10).until(_is_enabled_condition(args, results))
         element.click()

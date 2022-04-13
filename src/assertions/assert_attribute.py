@@ -4,6 +4,10 @@ from src.errors import set_error
 
 def assert_attr_eq(driver, args, results):
     element = get_element(driver, args, results)
+
+    if element is None:
+        return
+
     value = element.get_attribute(args["attr"])
     exp_value = args["value"]
 
@@ -16,6 +20,10 @@ def assert_attr_eq(driver, args, results):
 
 def assert_attr_nq(driver, args, results):
     element = get_element(driver, args, results)
+
+    if element is None:
+        return
+
     value = element.get_attribute(args["attr"])
     exp_value = args["value"]
 

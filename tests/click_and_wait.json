@@ -1,48 +1,82 @@
 {
   "id": "click and wait",
 
-  "navigate": {
+  "action: navigate": {
     "action": "navigate",
     "url": "http://127.0.0.1:8000"
   },
 
-  "set attribute": {
+  "action: set attribute": {
     "action": "click",
     "id": "btnSetAttribute"
   },
 
-  "assert data-active is true": {
+  "wait: wait_for_attribute": {
+    "action": "wait_for_attribute",
+    "id": "target",
+    "attr": "data-active",
+    "value": "true"
+  },
+
+  "assert: assert data-active is true": {
     "action": "assert_attr_eq",
     "id": "target",
     "attr": "data-active",
     "value": "true"
   },
 
-  "set style": {
+  "action: set style": {
     "action": "click",
     "id": "btnSetStyle"
   },
 
-  "assert padding is 1rem": {
+  "assert: padding is 1rem - pass": {
     "action": "assert_style_eq",
     "id": "target",
     "property": "padding",
     "value": "16px"
   },
 
-  "set text": {
+  "assert: padding is 1rem - fail": {
+    "action": "assert_style_eq",
+    "id": "target",
+    "property": "padding",
+    "value": "32px"
+  },
+
+  "action: set text": {
     "action": "click",
     "id": "btnSetText"
   },
 
-  "assert text": {
+  "assert: text - pass": {
+    "action": "assert_text_eq",
+    "id": "target",
+    "value": "Test"
+  },
+
+  "assert: text - fail": {
     "action": "assert_text_eq",
     "id": "target",
     "value": "Test 1"
   },
 
-  "set property": {
+  "action: set property": {
     "action": "click",
     "id": "btnSetProperty"
+  },
+
+  "assert: property - pass": {
+    "action":"assert_property_eq",
+    "id": "target",
+    "property": "myProperty",
+    "value": "Test"
+  },
+
+  "assert: property - fail": {
+    "action":"assert_property_eq",
+    "id": "target",
+    "property": "myProperty",
+    "value": "Test 1"
   }
 }

@@ -1,13 +1,15 @@
-from src.elements import get_value
+from src.elements import get_element
 from src.errors import set_error
 
 
 def assert_value_eq(driver, args, results):
-    exp_value = args["value"]
-    value = get_value(driver, args, results)
+    element = get_element(driver, args, results)
 
-    if value is None:
+    if element is None:
         return
+
+    exp_value = args["value"]
+    value = element.get_attribute("value")
 
     if str(exp_value) == str(value):
         results[args["step"]] = "success"
@@ -16,8 +18,13 @@ def assert_value_eq(driver, args, results):
 
 
 def assert_value_neq(driver, args, results):
+    element = get_element(driver, args, results)
+
+    if element is None:
+        return
+
     exp_value = args["value"]
-    value = get_value(driver, args, results)
+    value = element.get_attribute("value")
 
     if value is None:
         return

@@ -1,24 +1,24 @@
 {
   "id": "test expected failures",
 
-  "navigate": {
+  "action: navigate": {
     "action": "navigate",
     "url": "http://127.0.0.1:8000"
   },
 
-  "set fake element": {
+  "action: set fake element": {
     "action"  : "type_text",
     "id"      : "edtNotThere",
     "value"   : "not there"
   },
 
-  "check age is not zero": {
+  "assert: check age is not zero": {
     "action"  : "assert_value_neq",
     "id"      : "edtNotThere",
     "value"   : 0
   },
 
-  "wait for component to load": {
+  "assert: wait for component to load": {
     "action"  : "wait_is_ready",
     "query"   : "custom-component",
     "timeout" : 10

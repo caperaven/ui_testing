@@ -4,6 +4,10 @@ from src.errors import set_error
 
 def assert_style_eq(driver, args, results):
     element = get_element(driver, args, results)
+
+    if element is None:
+        return
+
     prop = args['property']
     value = element.value_of_css_property(prop)
     exp_value = args["value"]
@@ -17,6 +21,10 @@ def assert_style_eq(driver, args, results):
 
 def assert_style_neq(driver, args, results):
     element = get_element(driver, args, results)
+
+    if element is None:
+        return
+
     prop = args['property']
     value = element.value_of_css_property(prop)
     exp_value = args["value"]
