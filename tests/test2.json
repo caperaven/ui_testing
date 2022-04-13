@@ -21,7 +21,7 @@
   "wait for component to load": {
     "action"  : "wait_is_ready",
     "query"   : "custom-component",
-    "timeout" : 1
+    "timeout" : 10
   }
 }
 

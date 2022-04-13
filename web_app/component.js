@@ -3,11 +3,10 @@ class CustomComponent extends HTMLElement {
         this.innerHTML = await fetch(import.meta.url.replace(".js", ".html")).then(result => result.text());
 
         requestAnimationFrame(() => {
-            //this.isReady = true;
-
             setTimeout(() => {
+                this.isReady = true;
                 this.dispatchEvent(new CustomEvent("isReady"));
-            }, 15000)
+            }, 1)
         })
     }
 }
