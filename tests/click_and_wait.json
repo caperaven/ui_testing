@@ -56,7 +56,7 @@
     "id": "btnSetText"
   },
 
-  "wait: for test = 'Test'": {
+  "wait: for text = 'Test'": {
     "action": "wait_for_text",
     "id": "target",
     "value": "Test"
@@ -77,6 +77,13 @@
   "action: set property": {
     "action": "click",
     "id": "btnSetProperty"
+  },
+
+  "wait: myProperty = 'Test'": {
+    "action": "wait_for_property",
+    "id": "target",
+    "property": "myProperty",
+    "value": "Test"
   },
 
   "assert: property - pass": {

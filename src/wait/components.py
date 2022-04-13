@@ -2,7 +2,7 @@ from src.elements import get_element
 from selenium.webdriver.support.ui import WebDriverWait
 from src.data import data
 from src.errors import set_error
-from src.wait.conditions import _is_ready_condition, _attribute_condition, _css_condition, _text_condition
+from src.wait.conditions import _is_ready_condition, _attribute_condition, _css_condition, _text_condition, _property_condition
 
 
 def wait_is_ready(driver, args, results):
@@ -76,6 +76,22 @@ def wait_for_text(driver, args, results):
     results[args["step"]] = "success"
 
 
+"""
+wait until a property on a element has a particular value
+"""
+
+def wait_for_property(driver, args, results):
+    try:
+        timeout = args["timeout"] if "timeout" in args else 10
+        WebDriverWait(driver, timeout).until(_property_condition(args, results))
+    except Exception as e:
+        print(e)
+        name = args["id"] or args["query"]
+        set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
+        pass
+
+    results[args["step"]] = "success"
+
 
 """
 wait for a css property to have a value
@@ -101,13 +117,4 @@ wait for a element to have child elements
 
 
 def wait_for_children(driver, args, results):
-    return
-
-
-"""
-wait until a property on a element has a particular value
-"""
-
-
-def wait_for_property(driver, args, results):
     return

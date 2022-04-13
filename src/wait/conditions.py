@@ -51,3 +51,14 @@ def _css_condition(args, results):
         return value == exp_value
 
     return _predicate
+
+
+def _property_condition(args, results):
+    def _predicate(driver):
+        element = get_element(driver, args, results)
+        prop = args["property"]
+        value = element.get_property(prop)
+        exp_value = args["value"]
+        return value == exp_value
+
+    return _predicate
