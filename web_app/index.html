@@ -6,6 +6,21 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <style>
+        #target {
+            display: block;
+            padding: 1rem;
+            background: whitesmoke;
+            border: solid 1px silver;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-direction: row;
+            padding: 1rem;
+        }
+    </style>
 </head>
 <body>
     <label>
@@ -23,8 +38,18 @@
 
     <custom-component></custom-component>
 
+    <div id="target"></div>
+
+    <div class="toolbar">
+        <button id="btnSetAttribute">Set Attribute</button>
+        <button id="btnSetStyle" disabled>Set Style</button>
+        <button id="btnSetText" disabled>Set Text</button>
+        <button id="btnSetProperty" disabled>Set Text</button>
+    </div>
+
     <script type="module">
         import "./component.js"
+        import "./index.js"
     </script>
 </body>
 </html>

@@ -1,9 +1,13 @@
 from selenium import webdriver
+# actions
 from src.actions.navigate import navigate
 from src.actions.type import type_text
+from src.actions.click import click
+# assertions
 from src.assertions.assert_value import assert_value_eq, assert_value_neq
+from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq
+# components
 from src.wait.components import wait_is_ready
-
 
 class TestRunner:
     def __init__(self, logger):
@@ -47,11 +51,20 @@ class TestRunner:
     def type_text(self, step, results):
         type_text(self.driver, step, results)
 
+    def click(self, step, results):
+        click(self.driver, step, results)
+
     def assert_value_eq(self, step, results):
         assert_value_eq(self.driver, step, results)
 
     def assert_value_neq(self, step, results):
         assert_value_neq(self.driver, step, results)
+
+    def assert_attr_eq(self, step, results):
+        assert_attr_eq(self.driver, step, results)
+
+    def assert_attr_nq(self, step, results):
+        assert_attr_nq(self.driver, step, results)
 
     def wait_is_ready(self, step, results):
         wait_is_ready(self.driver, step, results)

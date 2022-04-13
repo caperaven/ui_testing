@@ -2,18 +2,7 @@ from src.elements import get_element, get_property
 from selenium.webdriver.support.ui import WebDriverWait
 from src.data import data
 from src.errors import set_error
-
-
-def _is_ready_condition(args, results):
-    def _predicate(driver):
-        element = get_element(driver, args, results)
-        value = element.get_attribute("data-ready")
-        if value is None:
-            return False
-        else:
-            return True
-
-    return _predicate
+from src.wait.conditions import _is_ready_condition
 
 
 def wait_is_ready(driver, args, results):
