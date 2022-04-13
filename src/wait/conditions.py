@@ -25,6 +25,7 @@ def _is_enabled_condition(args, results):
 def _text_condition(args, results):
     def _predicate(driver):
         pass
+
     return _predicate
 
 
@@ -34,10 +35,16 @@ def _attribute_condition(args, results):
         value = element.get_attribute(args["attr"])
         exp_value = args["value"]
         return value == exp_value
+
     return _predicate
 
 
-def _style_condition(args, results):
+def _css_condition(args, results):
     def _predicate(driver):
-        pass
+        element = get_element(driver, args, results)
+        prop = args['property']
+        value = element.value_of_css_property(prop)
+        exp_value = args["value"]
+        return value == exp_value
+
     return _predicate

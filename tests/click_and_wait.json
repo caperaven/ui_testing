@@ -30,6 +30,13 @@
     "id": "btnSetStyle"
   },
 
+  "wait: padding is 1rem": {
+    "action": "wait_for_css_property",
+    "id": "target",
+    "property": "padding",
+    "value": "16px"
+  },
+
   "assert: padding is 1rem - pass": {
     "action": "assert_style_eq",
     "id": "target",
