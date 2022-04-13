@@ -44,6 +44,8 @@ class TestRunner:
                 self_attr = getattr(self, action, None)
                 if callable(self_attr):
                     self_attr(step, test_results)
+                else:
+                    test_results[step_name] = "error: action '{}' not recognised".format(action)
 
     def navigate(self, step, results):
         navigate(self.driver, step, results)

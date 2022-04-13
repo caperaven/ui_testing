@@ -23,6 +23,13 @@
     "id": "btnSetStyle"
   },
 
+  "assert data-active is true": {
+    "action": "assert_style_eq",
+    "id": "target",
+    "property": "background",
+    "value": "gray"
+  },
+
   "set text": {
     "action": "click",
     "id": "btnSetText"
