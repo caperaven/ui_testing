@@ -46,6 +46,7 @@ class TestRunner:
                     self_attr(step, test_results)
                 else:
                     test_results[step_name] = "error: action '{}' not recognised".format(action)
+                    test_results["summary"]["error_count"] = test_results["summary"]["error_count"] + 1
 
     def navigate(self, step, results):
         navigate(self.driver, step, results)
