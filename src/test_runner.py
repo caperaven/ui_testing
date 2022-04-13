@@ -10,7 +10,7 @@ from src.assertions.assert_css import assert_style_eq, assert_style_neq
 from src.assertions.assert_text import assert_text_eq, assert_text_neq
 from src.assertions.assert_property import assert_property_eq, assert_property_neq
 # components
-from src.wait.components import wait_is_ready, wait_for_attribute, wait_for_css_property
+from src.wait.components import wait_is_ready, wait_for_attribute, wait_for_css_property, wait_for_text
 
 class TestRunner:
     def __init__(self, logger):
@@ -80,6 +80,9 @@ class TestRunner:
 
     def wait_for_css_property(self, step, results):
         wait_for_css_property(self.driver, step, results)
+
+    def wait_for_text(self, step, results):
+        wait_for_text(self.driver, step, results)
 
     def assert_style_eq(self, step, results):
         assert_style_eq(self.driver, step, results)

@@ -56,6 +56,12 @@
     "id": "btnSetText"
   },
 
+  "wait: for test = 'Test'": {
+    "action": "wait_for_text",
+    "id": "target",
+    "value": "Test"
+  },
+
   "assert: text - pass": {
     "action": "assert_text_eq",
     "id": "target",

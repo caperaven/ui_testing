@@ -24,7 +24,10 @@ def _is_enabled_condition(args, results):
 
 def _text_condition(args, results):
     def _predicate(driver):
-        pass
+        element = get_element(driver, args, results)
+        value = element.text
+        exp_value = args["value"]
+        return value == exp_value
 
     return _predicate
 

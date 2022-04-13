@@ -2,7 +2,7 @@ from src.elements import get_element
 from selenium.webdriver.support.ui import WebDriverWait
 from src.data import data
 from src.errors import set_error
-from src.wait.conditions import _is_ready_condition, _attribute_condition, _css_condition
+from src.wait.conditions import _is_ready_condition, _attribute_condition, _css_condition, _text_condition
 
 
 def wait_is_ready(driver, args, results):
@@ -61,6 +61,20 @@ def wait_for_css_property(driver, args, results):
         pass
 
     results[args["step"]] = "success"
+
+
+def wait_for_text(driver, args, results):
+    try:
+        timeout = args["timeout"] if "timeout" in args else 10
+        WebDriverWait(driver, timeout).until(_text_condition(args, results))
+    except Exception as e:
+        print(e)
+        name = args["id"] or args["query"]
+        set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
+        pass
+
+    results[args["step"]] = "success"
+
 
 
 """
