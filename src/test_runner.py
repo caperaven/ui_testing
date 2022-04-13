@@ -7,6 +7,7 @@ from src.actions.click import click
 from src.assertions.assert_value import assert_value_eq, assert_value_neq
 from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq
 from src.assertions.assert_css import assert_style_eq, assert_style_neq
+from src.assertions.assert_text import assert_text_eq, assert_text_neq
 # components
 from src.wait.components import wait_is_ready
 
@@ -78,3 +79,9 @@ class TestRunner:
 
     def assert_style_neq(self, step, results):
         assert_style_neq(self.driver, step, results)
+
+    def assert_text_eq(self, step, results):
+        assert_text_eq(self.driver, step, results)
+
+    def assert_text_neq(self, step, results):
+        assert_text_neq(self.driver, step, results)

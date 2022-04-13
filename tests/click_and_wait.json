@@ -35,6 +35,12 @@
     "id": "btnSetText"
   },
 
+  "assert text": {
+    "action": "assert_text_eq",
+    "id": "target",
+    "value": "Test 1"
+  },
+
   "set property": {
     "action": "click",
     "id": "btnSetProperty"
