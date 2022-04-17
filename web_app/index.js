@@ -1,11 +1,13 @@
 const target = document.getElementById("target");
+const DELAY = 1;
+
 
 document.getElementById("btnSetAttribute").addEventListener("click", () => {
     const timeout = setTimeout(() => {
         clearTimeout(timeout);
         target.setAttribute("data-active", "true");
         document.getElementById("btnSetStyle").removeAttribute("disabled");
-    }, 1000);
+    }, DELAY);
 })
 
 document.getElementById("btnSetStyle").addEventListener("click", () => {
@@ -13,7 +15,7 @@ document.getElementById("btnSetStyle").addEventListener("click", () => {
         clearTimeout(timeout);
         target.style.padding = "1rem";
         document.getElementById("btnSetText").removeAttribute("disabled");
-    }, 1000);
+    }, DELAY);
 })
 
 document.getElementById("btnSetText").addEventListener("click", () => {
@@ -21,12 +23,17 @@ document.getElementById("btnSetText").addEventListener("click", () => {
         clearTimeout(timeout);
         target.textContent = "Test"
         document.getElementById("btnSetProperty").removeAttribute("disabled");
-    }, 1000);
+    }, DELAY);
 })
 
 document.getElementById("btnSetProperty").addEventListener("click", () => {
     const timeout = setTimeout(() => {
         clearTimeout(timeout);
         target.myProperty = "Test"
-    }, 1000);
+        document.getElementById("btnSetClass").removeAttribute("disabled");
+    }, DELAY);
+})
+
+document.getElementById("btnSetClass").addEventListener("click", () => {
+    target.classList.add("test");
 })

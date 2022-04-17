@@ -62,3 +62,11 @@ def _property_condition(args, results):
         return value == exp_value
 
     return _predicate
+
+
+def _by_query(args, results):
+    def _predicate(driver):
+        element = driver.find_element_by_css_selector(args["query"])
+        return False if element is None else True
+
+    return _predicate

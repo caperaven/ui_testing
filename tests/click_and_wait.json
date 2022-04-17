@@ -98,5 +98,15 @@
     "id": "target",
     "property": "myProperty",
     "value": "Test 1"
+  },
+
+  "action: set class": {
+    "action": "click",
+    "id": "btnSetClass"
+  },
+
+  "skip.wait: wait for css selector": {
+    "action": "wait_for_css_selector",
+    "query": "target.test"
   }
 }
