@@ -1,5 +1,5 @@
 const target = document.getElementById("target");
-const DELAY = 1;
+const DELAY = 1000;
 
 
 document.getElementById("btnSetAttribute").addEventListener("click", () => {

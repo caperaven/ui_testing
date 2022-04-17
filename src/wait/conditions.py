@@ -64,9 +64,11 @@ def _property_condition(args, results):
     return _predicate
 
 
-def _by_query(args, results):
+def _class_condition(args, results):
     def _predicate(driver):
-        element = driver.find_element_by_css_selector(args["query"])
-        return False if element is None else True
-
+        element = get_element(driver, args, results)
+        cls = element.get_attribute("class")
+        sub = args["class"]
+        print(sub in cls)
+        return sub in cls
     return _predicate

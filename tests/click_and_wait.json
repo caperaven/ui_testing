@@ -105,8 +105,9 @@
     "id": "btnSetClass"
   },
 
-  "skip.wait: wait for css selector": {
-    "action": "wait_for_css_selector",
-    "query": "target.test"
+  "wait: wait for css class": {
+    "action": "wait_for_css_class",
+    "id": "target",
+    "class": "test"
   }
 }
