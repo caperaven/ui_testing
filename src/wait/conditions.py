@@ -71,7 +71,9 @@ def _class_condition(args, results):
         cls = element.get_attribute("class")
         sub = args["class"]
         return sub in cls
+
     return _predicate
+
 
 def _child_count_condition(args, results):
     def _predicate(driver):
@@ -79,4 +81,14 @@ def _child_count_condition(args, results):
         count = args["count"]
         all_children_by_css = driver.find_elements_by_css_selector(query)
         return len(all_children_by_css) == count
+
+    return _predicate
+
+
+def _selected_condition(args, results):
+    def _predicate(driver):
+        element = get_element(driver, args, results)
+        value = args["value"] or False
+        return element.is_selected() == value
+
     return _predicate

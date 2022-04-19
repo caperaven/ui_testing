@@ -115,5 +115,16 @@
     "action": "wait_for_children",
     "query": "#parent",
     "count": 1
+  },
+
+  "action: click checkbox": {
+    "action": "click",
+    "id": "chbIsActive"
+  },
+
+  "wait: for checkbox": {
+    "action": "wait_for_selected",
+    "id": "chbIsActive",
+    "value": true
   }
 }

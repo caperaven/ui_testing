@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from src.data import data
 from src.errors import set_error
 from src.wait.conditions import _class_condition, _is_ready_condition, _attribute_condition, _css_condition, \
-    _text_condition, _property_condition, _child_count_condition
+    _text_condition, _property_condition, _child_count_condition, _selected_condition
 
 
 def wait_is_ready(driver, args, results):
@@ -118,6 +118,18 @@ def wait_for_children(driver, args, results):
         query = args["query"]
         args["query"] = "{} *".format(query)
         WebDriverWait(driver, timeout).until(_child_count_condition(args, results))
+        results[args["step"]] = "success"
+    except Exception as e:
+        print(e)
+        name = args["id"] or args["query"]
+        set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
+        pass
+
+
+def wait_for_selected(driver, args, results):
+    try:
+        timeout = args["timeout"] if "timeout" in args else 10
+        WebDriverWait(driver, timeout).until(_selected_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
