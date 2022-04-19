@@ -109,5 +109,11 @@
     "action": "wait_for_css_class",
     "id": "target",
     "class": "test"
+  },
+
+  "wait: wait for children": {
+    "action": "wait_for_children",
+    "query": "#parent",
+    "count": 1
   }
 }

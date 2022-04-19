@@ -1,3 +1,4 @@
+from selenium.webdriver.common.by import By
 from src.elements import get_element
 
 
@@ -69,6 +70,13 @@ def _class_condition(args, results):
         element = get_element(driver, args, results)
         cls = element.get_attribute("class")
         sub = args["class"]
-        print(sub in cls)
         return sub in cls
+    return _predicate
+
+def _child_count_condition(args, results):
+    def _predicate(driver):
+        query = args["query"]
+        count = args["count"]
+        all_children_by_css = driver.find_elements_by_css_selector(query)
+        return len(all_children_by_css) == count
     return _predicate
