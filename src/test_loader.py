@@ -25,7 +25,7 @@ class TestLoader:
             if os.path.isabs(file):
                 self.files.append(file)
             else:
-                file = os.path.join(os.path.dirname(__file__), file)
+                file = os.path.join(os.getcwd(), file)
                 self.files.append(os.path.realpath(file))
 
     """
@@ -41,7 +41,7 @@ class TestLoader:
                 files = os.listdir(folder)
                 self.files.append(files)
             else:
-                folder = os.path.join(os.path.dirname(__file__), folder)
+                folder = os.path.join(os.getcwd(), folder)
                 folder = os.path.realpath(folder)
                 files = os.listdir(folder)
 

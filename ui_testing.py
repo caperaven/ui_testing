@@ -38,7 +38,7 @@ while True:
     file = test_loader.current_test_file()
     test_runner.run_test(json, results, file)
 
-folder = os.path.join(os.path.dirname(__file__), "test_results")
+folder = os.path.join(os.getcwd(), "test_results")
 
 save_results(results, folder)
 
