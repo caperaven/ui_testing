@@ -5,3 +5,5 @@ The purpose of this project is to automate testing using a JSON test file that d
 Once the tests are done, generate a results document.
 
 It uses selenium web driver and assumes you have it installed and in the environment paths.
+
+See the [tests folder](https://github.com/caperaven/ui_testing/tree/master/tests) for examples.
