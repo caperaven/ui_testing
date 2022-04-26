@@ -28,7 +28,7 @@ def _text_condition(args, results):
         element = get_element(driver, args, results)
         value = element.text
         exp_value = args["value"]
-        return value == exp_value
+        return _eval(value, exp_value, args["eval"])
 
     return _predicate
 
@@ -38,7 +38,7 @@ def _attribute_condition(args, results):
         element = get_element(driver, args, results)
         value = element.get_attribute(args["attr"])
         exp_value = args["value"]
-        return value == exp_value
+        return _eval(value, exp_value, args["eval"])
 
     return _predicate
 
@@ -49,7 +49,7 @@ def _css_condition(args, results):
         prop = args['property']
         value = element.value_of_css_property(prop)
         exp_value = args["value"]
-        return value == exp_value
+        return _eval(value, exp_value, args["eval"])
 
     return _predicate
 
@@ -60,7 +60,7 @@ def _property_condition(args, results):
         prop = args["property"]
         value = element.get_property(prop)
         exp_value = args["value"]
-        return value == exp_value
+        return _eval(value, exp_value, args["eval"])
 
     return _predicate
 
@@ -75,7 +75,7 @@ def _class_condition(args, results):
     return _predicate
 
 
-def _child_count_condition(args, results):
+def _count_condition(args, results):
     def _predicate(driver):
         query = args["query"]
         count = args["count"]
@@ -92,3 +92,15 @@ def _selected_condition(args, results):
         return element.is_selected() == value
 
     return _predicate
+
+
+def _eval(value1, value2, evaluator):
+    match evaluator:
+        case "lt":
+            return value1 < value2
+        case "gt":
+            return value1 > value2
+        case "ne":
+            return value1 != value2
+        case default:
+            return value1 == value2

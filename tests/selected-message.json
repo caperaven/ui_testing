@@ -1,0 +1,37 @@
+{
+  "id": "selected-message",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000/#selected-messages"
+  },
+
+  "wait: rectangles on simple bar chart": {
+    "action": "wait_for_count",
+    "query": "simple-bar-chart #bars > rect",
+    "count": 5
+  },
+
+  "action: click on first bar": {
+    "action": "click",
+    "query": "#bars > rect:nth-child(1)"
+  },
+
+  "wait: grid rows to be loaded: 5": {
+    "action": "wait_for_count",
+    "query": "#grid-body > tr",
+    "count": 5
+  },
+
+  "action: ctrl click on second bar": {
+    "action": "click",
+    "query": "#bars > rect:nth-child(2)",
+    "ctrl": true
+  },
+
+  "wait: grid rows to be loaded: 10": {
+    "action": "wait_for_count",
+    "query": "#grid-body > tr",
+    "count": 10
+  }
+}

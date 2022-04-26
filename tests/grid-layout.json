@@ -1,0 +1,14 @@
+{
+  "id": "grid-layout",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000/#css-grid-layout"
+  },
+
+  "wait: wait for children": {
+    "action": "wait_for_count",
+    "query": "my-component",
+    "count": 6
+  }
+}

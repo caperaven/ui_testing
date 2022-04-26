@@ -11,13 +11,22 @@ from src.assertions.assert_text import assert_text_eq, assert_text_neq
 from src.assertions.assert_property import assert_property_eq, assert_property_neq
 # components
 from src.wait.components import wait_for_css_class, wait_is_ready, wait_for_attribute, wait_for_css_property, wait_for_text, \
-    wait_for_property, wait_for_children, wait_for_selected
+    wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count
+import sys
 
 
 class TestRunner:
     def __init__(self, logger):
         self.logger = logger
-        self.driver = webdriver.Chrome()
+
+        options = None
+        if sys.argv.__contains__("--debug"):
+            options = webdriver.ChromeOptions()
+            options.add_argument("start-maximized")
+            options.add_argument("-disable-extensions")
+            options.add_argument("--auto-open-devtools-for-tabs")
+
+        self.driver = webdriver.Chrome(options=options)
 
     def __del__(self):
         self.driver.quit()
@@ -97,6 +106,12 @@ class TestRunner:
 
     def wait_for_selected(self, step, results):
         wait_for_selected(self.driver, step, results)
+
+    def wait_for_time(self, step, results):
+        wait_for_time(self.driver, step, results)
+
+    def wait_for_count(self, step, results):
+        wait_for_count(self.driver, step, results)
 
     def assert_style_eq(self, step, results):
         assert_style_eq(self.driver, step, results)
