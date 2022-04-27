@@ -5,7 +5,7 @@ from src.actions.type import type_text
 from src.actions.click import click
 # assertions
 from src.assertions.assert_value import assert_value_eq, assert_value_neq
-from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq
+from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq, assert_attributes
 from src.assertions.assert_css import assert_style_eq, assert_style_neq
 from src.assertions.assert_text import assert_text_eq, assert_text_neq
 from src.assertions.assert_property import assert_property_eq, assert_property_neq
@@ -34,7 +34,7 @@ class TestRunner:
         self.driver = None
 
     """
-    run the given test's steps and update the results object
+    run the given test.json's steps and update the results object
     """
     def run_test(self, json, results, file):
         self.logger.step(json["id"])
@@ -82,6 +82,9 @@ class TestRunner:
 
     def assert_attr_nq(self, step, results):
         assert_attr_nq(self.driver, step, results)
+
+    def assert_attributes(self, step, results):
+        assert_attributes(self.driver, step, results)
 
     def wait_is_ready(self, step, results):
         wait_is_ready(self.driver, step, results)

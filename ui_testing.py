@@ -1,7 +1,7 @@
 # Command line arguments
 # ------ Files --------------
-# --file c:\\tests\\test.json
-# --file ./../tests/test.json
+# --file c:\\tests\\test.json.json
+# --file ./../tests/test.json.json
 # ------ Folders --------------
 # --folder c:\\tests
 # --folder ./../tests
@@ -17,16 +17,16 @@ import os
 # 1. discovering
 # 2. loading
 # 3. dishing
-# of test files based on commandline arguments
+# of test.json files based on commandline arguments
 test_loader = TestLoader()
 
-# Test logger prints the current test progress based on the number of tests running
+# Test logger prints the current test.json progress based on the number of tests running
 test_logger = TestLogger(len(test_loader.files))
 
 # Test runner executes json intent and populate the results file
 test_runner = TestRunner(test_logger)
 
-# this will hold the test results
+# this will hold the test.json results
 results = {}
 
 # loop through the tests and execute them

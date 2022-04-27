@@ -4,6 +4,7 @@ from src.elements import get_element
 from selenium.webdriver.support.ui import WebDriverWait
 from src.data import data
 from src.errors import set_error
+from src.utils import get_name
 from src.wait.conditions import _class_condition, _is_ready_condition, _attribute_condition, _css_condition, \
     _text_condition, _property_condition, _count_condition, _selected_condition
 
@@ -41,7 +42,7 @@ def wait_for_attribute(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
         pass
 
@@ -58,7 +59,7 @@ def wait_for_css_property(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
         pass
 
@@ -70,7 +71,7 @@ def wait_for_text(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
         pass
 
@@ -87,7 +88,7 @@ def wait_for_property(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
         pass
 
@@ -104,7 +105,7 @@ def wait_for_css_class(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
         pass
 
@@ -123,7 +124,7 @@ def wait_for_children(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
         pass
 
@@ -140,7 +141,7 @@ def wait_for_count(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
         pass
 
@@ -157,7 +158,7 @@ def wait_for_time(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
         pass
 
@@ -174,6 +175,6 @@ def wait_for_selected(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: timeout() - waiting for '{}'".format(name))
         pass

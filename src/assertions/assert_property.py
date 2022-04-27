@@ -1,5 +1,6 @@
 from src.elements import get_element
 from src.errors import set_error
+from src.utils import get_name
 
 
 def assert_property_eq(driver, args, results):
@@ -15,7 +16,7 @@ def assert_property_eq(driver, args, results):
     if value == exp_value:
         results[args["step"]] = "success"
     else:
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: property '{}' on '{}' should have been '{}' but was '{}'".format(prop, name, exp_value, value))
 
 
@@ -30,7 +31,7 @@ def assert_property_neq(driver, args, results):
     exp_value = args["value"]
 
     if value == exp_value:
-        name = args["id"] or args["query"]
+        name = get_name(args)
         set_error(results, args["step"], "error: property '{}' on '{}' should have been '{}' but was '{}'".format(prop, name, exp_value, value))
     else:
         results[args["step"]] = "success"

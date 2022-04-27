@@ -49,7 +49,7 @@ class TestLoader:
                     self.files.append(os.path.join(folder, file))
 
     """
-    call this function to load the next test file as JSON and pass back the JSON object
+    call this function to load the next test.json file as JSON and pass back the JSON object
     if you are at the end and there is nothing more to execute, return None
     """
 
@@ -66,7 +66,7 @@ class TestLoader:
             return data
 
     """
-    what is the current test file being executed
+    what is the current test.json file being executed
     """
 
     def current_test_file(self):

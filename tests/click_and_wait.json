@@ -1,0 +1,130 @@
+{
+  "id": "click and wait",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000"
+  },
+
+  "action: set attribute": {
+    "action": "click",
+    "id": "btnSetAttribute"
+  },
+
+  "wait: wait_for_attribute": {
+    "action": "wait_for_attribute",
+    "id": "target",
+    "attr": "data-active",
+    "value": "true"
+  },
+
+  "assert: assert data-active is true": {
+    "action": "assert_attr_eq",
+    "id": "target",
+    "attr": "data-active",
+    "value": "true"
+  },
+
+  "action: set style": {
+    "action": "click",
+    "id": "btnSetStyle"
+  },
+
+  "wait: padding is 1rem": {
+    "action": "wait_for_css_property",
+    "id": "target",
+    "property": "padding",
+    "value": "16px"
+  },
+
+  "assert: padding is 1rem - pass": {
+    "action": "assert_style_eq",
+    "id": "target",
+    "property": "padding",
+    "value": "16px"
+  },
+
+  "assert: padding is 1rem - fail": {
+    "action": "assert_style_eq",
+    "id": "target",
+    "property": "padding",
+    "value": "32px"
+  },
+
+  "action: set text": {
+    "action": "click",
+    "id": "btnSetText"
+  },
+
+  "wait: for text = 'Test'": {
+    "action": "wait_for_text",
+    "id": "target",
+    "value": "Test"
+  },
+
+  "assert: text - pass": {
+    "action": "assert_text_eq",
+    "id": "target",
+    "value": "Test"
+  },
+
+  "assert: text - fail": {
+    "action": "assert_text_eq",
+    "id": "target",
+    "value": "Test 1"
+  },
+
+  "action: set property": {
+    "action": "click",
+    "id": "btnSetProperty"
+  },
+
+  "wait: myProperty = 'Test'": {
+    "action": "wait_for_property",
+    "id": "target",
+    "property": "myProperty",
+    "value": "Test"
+  },
+
+  "assert: property - pass": {
+    "action":"assert_property_eq",
+    "id": "target",
+    "property": "myProperty",
+    "value": "Test"
+  },
+
+  "assert: property - fail": {
+    "action":"assert_property_eq",
+    "id": "target",
+    "property": "myProperty",
+    "value": "Test 1"
+  },
+
+  "action: set class": {
+    "action": "click",
+    "id": "btnSetClass"
+  },
+
+  "wait: wait for css class": {
+    "action": "wait_for_css_class",
+    "id": "target",
+    "class": "test"
+  },
+
+  "wait: wait for children": {
+    "action": "wait_for_children",
+    "query": "#parent",
+    "count": 1
+  },
+
+  "action: click checkbox": {
+    "action": "click",
+    "id": "chbIsActive"
+  },
+
+  "wait: for checkbox": {
+    "action": "wait_for_selected",
+    "id": "chbIsActive",
+    "value": true
+  }
+}

@@ -4,7 +4,7 @@ class TestLogger:
         self.progress = 0
 
     """
-    move the progress up by one and print the new test as defined by id
+    move the progress up by one and print the new test.json as defined by id
     """
     def step(self, test_id):
         self.progress += 1

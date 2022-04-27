@@ -1,0 +1,45 @@
+{
+  "id": "test inputs and validate",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000"
+  },
+  "action: set first name": {
+    "action"  : "type_text",
+    "id"      : "edtFirstName",
+    "value"   : "John"
+  },
+  "action: set last name": {
+    "action"  : "type_text",
+    "id"      : "edtLastName",
+    "value"   : "Doe"
+  },
+  "action: set age": {
+    "action"  : "type_text",
+    "id"      : "edtAge",
+    "value"   : 30
+  },
+  "assert: check first name value": {
+    "action"  : "assert_value_eq",
+    "id"      : "edtFirstName",
+    "value"   : "John"
+  },
+  "assert: check last name value": {
+    "action"  : "assert_value_eq",
+    "id"      : "edtLastName",
+    "value"   : "Doe"
+  },
+  "assert: check age value - fail": {
+    "action"  : "assert_value_eq",
+    "id"      : "edtAge",
+    "value"   : 33
+  },
+  "assert: check age is not zero": {
+    "action"  : "assert_value_neq",
+    "id"      : "edtAge",
+    "value"   : 0
+  }
+}
+
+
