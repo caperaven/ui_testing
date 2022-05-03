@@ -9,6 +9,8 @@ from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq, asse
 from src.assertions.assert_css import assert_style_eq, assert_style_neq
 from src.assertions.assert_text import assert_text_eq, assert_text_neq
 from src.assertions.assert_property import assert_property_eq, assert_property_neq
+from src.assertions.assert_tag_name import assert_tag_name_eq, assert_tag_name_neq
+from src.assertions.assert_child_count import assert_child_count_eq, assert_child_count_neq
 # components
 from src.wait.components import wait_for_css_class, wait_is_ready, wait_for_attribute, wait_for_css_property, wait_for_text, \
     wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count
@@ -133,3 +135,15 @@ class TestRunner:
 
     def assert_property_neq(self, step, results):
         assert_property_neq(self.driver, step, results)
+
+    def assert_tag_name_eq(self, step, results):
+        assert_tag_name_eq(self.driver, step, results)
+
+    def assert_tag_name_neq(self, step, results):
+        assert_tag_name_neq(self.driver, step, results)
+
+    def assert_child_count_eq(self, step, results):
+        assert_child_count_eq(self.driver, step, results)
+
+    def assert_child_count_neq(self, step, results):
+        assert_child_count_neq(self.driver, step, results)
