@@ -1,0 +1,136 @@
+{
+  "id": "paging_toolbar_tests",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000/#bar-chart"
+  },
+
+  "wait: for size to have text": {
+    "action": "wait_for_value",
+    "id": "edtSize",
+    "value": "5"
+  },
+
+  "wait: #graph1 is drawn": {
+    "action": "wait_for_count",
+    "query": "#graph1 #bars > rect",
+    "count": 5
+  },
+
+  "action: set page size to 1": {
+    "action": "type_text",
+    "id": "edtSize",
+    "value": "1"
+  },
+
+  "wait: #graph1 shows 1 bar": {
+    "action": "wait_for_count",
+    "query": "#graph1 #bars > rect",
+    "count": 1
+  },
+
+  "wait: page count to show 100": {
+    "action": "wait_for_text",
+    "id": "lblPageCount",
+    "value": "of 100"
+  },
+
+  "action: set page size to 10": {
+    "action": "type_text",
+    "id": "edtSize",
+    "value": "10"
+  },
+
+  "wait: #graph1 shows 10 bars": {
+    "action": "wait_for_count",
+    "query": "#graph1 #bars > rect",
+    "count": 10
+  },
+
+  "wait: page count to show 10": {
+    "action": "wait_for_text",
+    "id": "lblPageCount",
+    "value": "of 10"
+  },
+
+  "wait: for edtPage to show 1": {
+    "action": "wait_for_value",
+    "id": "edtPage",
+    "value": "1"
+  },
+
+  "assert: check that the first item is for 'code 0'": {
+    "action": "wait_for_text",
+    "query": "#graph1 > svg > g > g:nth-child(1) > g:nth-child(2) > text",
+    "value": "code 0"
+  },
+
+  "action: click on 'next' button": {
+    "action": "click",
+    "query": "button[data-action='next']"
+  },
+
+  "wait: for edtPage to show 2": {
+    "action": "wait_for_value",
+    "id": "edtPage",
+    "value": "2"
+  },
+
+  "assert: check that the first item is for 'code 10'": {
+    "action": "wait_for_text",
+    "query": "#graph1 > svg > g > g:nth-child(1) > g:nth-child(2) > text",
+    "value": "code 10"
+  },
+
+  "action: click on 'last' button": {
+    "action": "click",
+    "query": "button[data-action='last']"
+  },
+
+  "wait: for edtPage to show 10": {
+    "action": "wait_for_value",
+    "id": "edtPage",
+    "value": "10"
+  },
+
+  "assert: check that the first item is for 'code 90'": {
+    "action": "wait_for_text",
+    "query": "#graph1 > svg > g > g:nth-child(1) > g:nth-child(2) > text",
+    "value": "code 90"
+  },
+
+  "action: click on 'previous' button": {
+    "action": "click",
+    "query": "button[data-action='previous']"
+  },
+
+  "wait: for edtPage to show 9": {
+    "action": "wait_for_value",
+    "id": "edtPage",
+    "value": "9"
+  },
+
+  "assert: check that the first item is for 'code 80'": {
+    "action": "wait_for_text",
+    "query": "#graph1 > svg > g > g:nth-child(1) > g:nth-child(2) > text",
+    "value": "code 80"
+  },
+
+  "action: click on 'first' button": {
+    "action": "click",
+    "query": "button[data-action='first']"
+  },
+
+  "wait: for edtPage to show 1 again": {
+    "action": "wait_for_value",
+    "id": "edtPage",
+    "value": "1"
+  },
+
+  "assert: check that the first item is for 'code 0' again": {
+    "action": "wait_for_text",
+    "query": "#graph1 > svg > g > g:nth-child(1) > g:nth-child(2) > text",
+    "value": "code 0"
+  }
+}

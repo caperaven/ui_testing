@@ -1,4 +1,5 @@
 from src.elements import get_element
+from src.utils import get_eval
 
 
 def _is_ready_condition(args, results):
@@ -27,7 +28,7 @@ def _text_condition(args, results):
         element = get_element(driver, args, results)
         value = element.text
         exp_value = args["value"]
-        return _eval(value, exp_value, args["eval"])
+        return _eval(value, exp_value, args)
 
     return _predicate
 
@@ -37,7 +38,7 @@ def _attribute_condition(args, results):
         element = get_element(driver, args, results)
         value = element.get_attribute(args["attr"])
         exp_value = args["value"]
-        return _eval(value, exp_value, args["eval"])
+        return _eval(value, exp_value, args)
 
     return _predicate
 
@@ -48,7 +49,7 @@ def _css_condition(args, results):
         prop = args['property']
         value = element.value_of_css_property(prop)
         exp_value = args["value"]
-        return _eval(value, exp_value, args["eval"])
+        return _eval(value, exp_value, args)
 
     return _predicate
 
@@ -59,7 +60,7 @@ def _property_condition(args, results):
         prop = args["property"]
         value = element.get_property(prop)
         exp_value = args["value"]
-        return _eval(value, exp_value, args["eval"])
+        return _eval(value, exp_value, args)
 
     return _predicate
 
@@ -93,7 +94,9 @@ def _selected_condition(args, results):
     return _predicate
 
 
-def _eval(value1, value2, evaluator):
+def _eval(value1, value2, args):
+    evaluator = get_eval(args)
+
     match evaluator:
         case "lt":
             return value1 < value2

@@ -13,7 +13,7 @@ from src.assertions.assert_tag_name import assert_tag_name_eq, assert_tag_name_n
 from src.assertions.assert_child_count import assert_child_count_eq, assert_child_count_neq
 # components
 from src.wait.components import wait_for_css_class, wait_is_ready, wait_for_attribute, wait_for_css_property, wait_for_text, \
-    wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count
+    wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count, wait_for_value
 import sys
 
 
@@ -99,6 +99,9 @@ class TestRunner:
 
     def wait_for_text(self, step, results):
         wait_for_text(self.driver, step, results)
+
+    def wait_for_value(self, step, results):
+        wait_for_value(self.driver, step, results)
 
     def wait_for_property(self, step, results):
         wait_for_property(self.driver, step, results)
