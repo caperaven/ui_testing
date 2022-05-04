@@ -18,3 +18,19 @@ Check your Chrome version by opening this URL in chrome.
 [chrome://settings/help](chrome://settings/help)
 
 If you have added your drivers to the path, make sure you restart your terminals and IDE before use.
+
+## Running tests
+
+Run the ui_testing.exe with the following parameters
+
+You can either run a single test or run all the tests in the defined folder.  
+For --file and --folder the next parameter needs to be the file or folder to use
+
+1. --file ./tests/paging-toolbar.json 
+2. --folder ./tests
+3. --debug
+4. --root https://127.0.0.1:8080
+
+Use --debug if you want to have the dev tools automatically open when running tests.
+use --root followed by the root URL if you want to return to a neutral page after each test.
+

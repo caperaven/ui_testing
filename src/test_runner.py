@@ -64,6 +64,14 @@ class TestRunner:
                     test_results[step_name] = "error: action '{}' not recognised".format(action)
                     test_results["summary"]["error_count"] = test_results["summary"]["error_count"] + 1
 
+        if "--root" in sys.argv:
+            index = sys.argv.index("--root")
+            url = sys.argv[index + 1]
+            self.navigate({
+                "step": "go to root",
+                "url": url
+            }, test_results)
+
     def navigate(self, step, results):
         navigate(self.driver, step, results)
 
