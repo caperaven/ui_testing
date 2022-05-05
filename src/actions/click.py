@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from src.errors import set_error
+from src.utils import get_name
 from src.wait.conditions import _is_enabled_condition
 
 
@@ -37,7 +38,8 @@ def click(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        set_error(results, args["step"], "error: element '{}' not clickable".format(args["id"] or args["query"]))
+        name = get_name(args)
+        set_error(results, args["step"], "error: element '{}' not clickable".format(name))
         pass
 
 
@@ -53,7 +55,8 @@ def dbl_click(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        set_error(results, args["step"], "error: element '{}' not dbl clickable".format(args["id"] or args["query"]))
+        name = get_name(args)
+        set_error(results, args["step"], "error: element '{}' not dbl clickable".format(name))
         pass
 
 
@@ -69,5 +72,6 @@ def context_click(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        set_error(results, args["step"], "error: element '{}' not context clickable".format(args["id"] or args["query"]))
+        name = get_name(args)
+        set_error(results, args["step"], "error: element '{}' not context clickable".format(name))
         pass

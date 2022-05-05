@@ -3,6 +3,7 @@ from selenium import webdriver
 from src.actions.navigate import navigate
 from src.actions.type import type_text
 from src.actions.click import click, dbl_click, context_click
+from src.actions.switch_to import switch_to_frame, switch_to_driver
 # assertions
 from src.assertions.assert_value import assert_value_eq, assert_value_neq
 from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq, assert_attributes
@@ -83,6 +84,12 @@ class TestRunner:
 
     def dbl_click(self, step, results):
         dbl_click(self.driver, step, results)
+
+    def switch_to_frame(self, step, results):
+        switch_to_frame(self.driver, step, results)
+
+    def switch_to_driver(self, step, results):
+        switch_to_driver(self.driver, step, results)
 
     def context_click(self, step, results):
         context_click(self.driver, step, results)

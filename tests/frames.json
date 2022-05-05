@@ -1,0 +1,41 @@
+{
+  "id": "mouse input tests",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000"
+  },
+
+  "action: swap to frame": {
+    "action": "switch_to_frame",
+    "id": "frame"
+  },
+
+  "action: type input in frame's input": {
+    "action": "type_text",
+    "id": "edtFrameInput",
+    "value": "new value"
+  },
+
+  "wait: wait for input change": {
+    "action": "wait_for_value",
+    "id": "edtFrameInput",
+    "value": "new value"
+  },
+
+  "action: swap to content": {
+    "action": "switch_to_driver"
+  },
+
+  "action: add first name text on main content": {
+    "action": "type_text",
+    "id": "edtFirstName",
+    "value": "my first name"
+  },
+
+  "wait: wait for first name change": {
+    "action": "wait_for_value",
+    "id": "edtFirstName",
+    "value": "my first name"
+  }
+}
