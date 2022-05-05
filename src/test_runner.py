@@ -2,7 +2,7 @@ from selenium import webdriver
 # actions
 from src.actions.navigate import navigate
 from src.actions.type import type_text
-from src.actions.click import click
+from src.actions.click import click, dbl_click, context_click
 # assertions
 from src.assertions.assert_value import assert_value_eq, assert_value_neq
 from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq, assert_attributes
@@ -80,6 +80,12 @@ class TestRunner:
 
     def click(self, step, results):
         click(self.driver, step, results)
+
+    def dbl_click(self, step, results):
+        dbl_click(self.driver, step, results)
+
+    def context_click(self, step, results):
+        context_click(self.driver, step, results)
 
     def assert_value_eq(self, step, results):
         assert_value_eq(self.driver, step, results)

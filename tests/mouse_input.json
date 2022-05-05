@@ -1,0 +1,41 @@
+{
+    "id": "mouse input tests",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000"
+  },
+
+  "action: click": {
+    "action": "click",
+    "id": "custom-header"
+  },
+
+  "wait: click text": {
+    "action": "wait_for_text",
+    "id": "custom-header",
+    "value": "click"
+  },
+
+  "action: dbl click": {
+    "action": "dbl_click",
+    "id": "custom-header"
+  },
+
+  "wait: dbl click text": {
+    "action": "wait_for_text",
+    "id": "custom-header",
+    "value": "dbl click"
+  },
+
+  "action: context click": {
+    "action": "context_click",
+    "id": "custom-header"
+  },
+
+  "wait: context click text": {
+    "action": "wait_for_text",
+    "id": "custom-header",
+    "value": "context click"
+  }
+}

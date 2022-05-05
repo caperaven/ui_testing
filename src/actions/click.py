@@ -39,3 +39,35 @@ def click(driver, args, results):
         print(e)
         set_error(results, args["step"], "error: element '{}' not clickable".format(args["id"] or args["query"]))
         pass
+
+
+def dbl_click(driver, args, results):
+    element = get_element(driver, args, results)
+
+    if element is None:
+        return
+
+    try:
+        action = ActionChains(driver).double_click(element)
+        action.perform()
+        results[args["step"]] = "success"
+    except Exception as e:
+        print(e)
+        set_error(results, args["step"], "error: element '{}' not dbl clickable".format(args["id"] or args["query"]))
+        pass
+
+
+def context_click(driver, args, results):
+    element = get_element(driver, args, results)
+
+    if element is None:
+        return
+
+    try:
+        action = ActionChains(driver).context_click(element)
+        action.perform()
+        results[args["step"]] = "success"
+    except Exception as e:
+        print(e)
+        set_error(results, args["step"], "error: element '{}' not context clickable".format(args["id"] or args["query"]))
+        pass
