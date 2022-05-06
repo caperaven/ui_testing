@@ -37,7 +37,7 @@ def click(driver, args, results):
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(results, args["step"], "error: element '{}' not clickable".format(name))
+        set_error(driver, results, args["step"], "error: element '{}' not clickable".format(name))
         pass
 
 
@@ -54,7 +54,7 @@ def dbl_click(driver, args, results):
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(results, args["step"], "error: element '{}' not dbl clickable".format(name))
+        set_error(driver, results, args["step"], "error: element '{}' not dbl clickable".format(name))
         pass
 
 
@@ -71,5 +71,5 @@ def context_click(driver, args, results):
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(results, args["step"], "error: element '{}' not context clickable".format(name))
+        set_error(driver, results, args["step"], "error: element '{}' not context clickable".format(name))
         pass

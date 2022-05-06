@@ -13,7 +13,7 @@ def assert_child_count_eq(driver, args, results):
         results[args["step"]] = "success"
     else:
         name = get_name(args)
-        set_error(results, args["step"], "error: child count on '{}' should have been '{}' but was '{}'".format(name, count, act_count))
+        set_error(driver, results, args["step"], "error: child count on '{}' should have been '{}' but was '{}'".format(name, count, act_count))
 
 
 def assert_child_count_neq(driver, args, results):
@@ -27,5 +27,5 @@ def assert_child_count_neq(driver, args, results):
         results[args["step"]] = "success"
     else:
         name = get_name(args)
-        set_error(results, args["step"],
+        set_error(driver, results, args["step"],
                   "error: child count on '{}' should NOT have been '{}' but was".format(name, count))

@@ -27,7 +27,7 @@ def wait_is_ready(driver, args, results):
             results[args["step"]] = "success"
         except Exception as e:
             print("wait_is_ready failed, {}".format(e.__class__.__name__))
-            set_error(results, args["step"], "error: timeout() - waiting for isReady on '{}', {}".format(args["query"], e.__class__.__name__))
+            set_error(driver, results, args["step"], "error: timeout() - waiting for isReady on '{}', {}".format(args["query"], e.__class__.__name__))
             pass
 
 
@@ -39,7 +39,7 @@ def wait_for_element(driver, args, results):
     except Exception as e:
         print("wait_for_element failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for element {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for element {}".format(name, e.__class__.__name__))
         pass
 
 
@@ -51,7 +51,7 @@ def wait_for_attribute(driver, args, results):
     except Exception as e:
         print("wait_for_attribute failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for attribute on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for attribute on '{}', {}".format(name, e.__class__.__name__))
         pass
 
 
@@ -63,7 +63,7 @@ def wait_for_css_property(driver, args, results):
     except Exception as e:
         print("wait_for_css_property failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for css property on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for css property on '{}', {}".format(name, e.__class__.__name__))
         pass
 
 
@@ -75,7 +75,7 @@ def wait_for_text(driver, args, results):
     except Exception as e:
         print("wait_for_text failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for text on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for text on '{}', {}".format(name, e.__class__.__name__))
         pass
 
 
@@ -88,7 +88,7 @@ def wait_for_value(driver, args, results):
     except Exception as e:
         print("wait_for_value failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for value on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for value on '{}', {}".format(name, e.__class__.__name__))
         pass
 
 
@@ -100,7 +100,7 @@ def wait_for_property(driver, args, results):
     except Exception as e:
         print("wait_for_property failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for '{}', {}".format(name, e.__class__.__name__))
         pass
 
 
@@ -112,7 +112,7 @@ def wait_for_css_class(driver, args, results):
     except Exception as e:
         print("wait_for_css_class failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for '{}', {}".format(name, e.__class__.__name__))
         pass
 
 
@@ -126,7 +126,7 @@ def wait_for_children(driver, args, results):
     except Exception as e:
         print("wait_for_children failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for children on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for children on '{}', {}".format(name, e.__class__.__name__))
         pass
 
 
@@ -138,7 +138,7 @@ def wait_for_count(driver, args, results):
     except Exception as e:
         print("wait_for_count failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for count on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for count on '{}', {}".format(name, e.__class__.__name__))
         pass
 
 
@@ -150,7 +150,7 @@ def wait_for_time(driver, args, results):
     except Exception as e:
         print("wait_for_time failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for time '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for time '{}', {}".format(name, e.__class__.__name__))
         pass
 
 
@@ -162,5 +162,5 @@ def wait_for_selected(driver, args, results):
     except Exception as e:
         print("wait_for_selected failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(results, args["step"], "error: timeout() - waiting for selected on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for selected on '{}', {}".format(name, e.__class__.__name__))
         pass

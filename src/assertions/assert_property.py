@@ -17,7 +17,7 @@ def assert_property_eq(driver, args, results):
         results[args["step"]] = "success"
     else:
         name = get_name(args)
-        set_error(results, args["step"], "error: property '{}' on '{}' should have been '{}' but was '{}'".format(prop, name, exp_value, value))
+        set_error(driver, results, args["step"], "error: property '{}' on '{}' should have been '{}' but was '{}'".format(prop, name, exp_value, value))
 
 
 def assert_property_neq(driver, args, results):
@@ -32,6 +32,6 @@ def assert_property_neq(driver, args, results):
 
     if value == exp_value:
         name = get_name(args)
-        set_error(results, args["step"], "error: property '{}' on '{}' should have been '{}' but was '{}'".format(prop, name, exp_value, value))
+        set_error(driver, results, args["step"], "error: property '{}' on '{}' should have been '{}' but was '{}'".format(prop, name, exp_value, value))
     else:
         results[args["step"]] = "success"

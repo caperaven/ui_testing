@@ -10,6 +10,11 @@
     "action": "refresh"
   },
 
+  "action: print": {
+    "action": "print_screen",
+    "file": "screen1.png"
+  },
+
   "action: swap to frame": {
     "action": "switch_to_frame",
     "id": "frame"
