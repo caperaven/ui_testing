@@ -37,3 +37,11 @@ document.getElementById("btnSetProperty").addEventListener("click", () => {
 document.getElementById("btnSetClass").addEventListener("click", () => {
     target.classList.add("test");
 })
+
+document.getElementById("btnSetClass").addEventListener("click", () => {
+    target.classList.add("test");
+})
+
+document.getElementById("btnNewTab"),addEventListener("click", () => {
+    window.open('/new-tab.html', '_blank');
+})

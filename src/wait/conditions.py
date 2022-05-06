@@ -2,6 +2,14 @@ from src.elements import get_element
 from src.utils import get_eval
 
 
+def _element_condition(args, results):
+    def _predicate(driver):
+        element = get_element(driver, args, results)
+        return False if element is None else True
+
+    return _predicate
+
+
 def _is_ready_condition(args, results):
     def _predicate(driver):
         element = get_element(driver, args, results)

@@ -3,7 +3,7 @@ from selenium import webdriver
 from src.actions.navigate import navigate
 from src.actions.type import type_text
 from src.actions.click import click, dbl_click, context_click
-from src.actions.switch_to import switch_to_frame, switch_to_driver
+from src.actions.switch_to import switch_to_frame, switch_to_default, switch_to_tab
 # assertions
 from src.assertions.assert_value import assert_value_eq, assert_value_neq
 from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq, assert_attributes
@@ -14,7 +14,7 @@ from src.assertions.assert_tag_name import assert_tag_name_eq, assert_tag_name_n
 from src.assertions.assert_child_count import assert_child_count_eq, assert_child_count_neq
 # components
 from src.wait.components import wait_for_css_class, wait_is_ready, wait_for_attribute, wait_for_css_property, wait_for_text, \
-    wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count, wait_for_value
+    wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count, wait_for_value, wait_for_element
 import sys
 
 
@@ -85,14 +85,17 @@ class TestRunner:
     def dbl_click(self, step, results):
         dbl_click(self.driver, step, results)
 
+    def context_click(self, step, results):
+        context_click(self.driver, step, results)
+
     def switch_to_frame(self, step, results):
         switch_to_frame(self.driver, step, results)
 
-    def switch_to_driver(self, step, results):
-        switch_to_driver(self.driver, step, results)
+    def switch_to_default(self, step, results):
+        switch_to_default(self.driver, step, results)
 
-    def context_click(self, step, results):
-        context_click(self.driver, step, results)
+    def switch_to_tab(self, step, results):
+        switch_to_tab(self.driver, step, results)
 
     def assert_value_eq(self, step, results):
         assert_value_eq(self.driver, step, results)
@@ -108,6 +111,9 @@ class TestRunner:
 
     def assert_attributes(self, step, results):
         assert_attributes(self.driver, step, results)
+
+    def wait_for_element(self, step, results):
+        wait_for_element(self.driver, step, results)
 
     def wait_is_ready(self, step, results):
         wait_is_ready(self.driver, step, results)

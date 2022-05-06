@@ -24,7 +24,7 @@
   },
 
   "action: swap to content": {
-    "action": "switch_to_driver"
+    "action": "switch_to_default"
   },
 
   "action: add first name text on main content": {
@@ -37,5 +37,41 @@
     "action": "wait_for_value",
     "id": "edtFirstName",
     "value": "my first name"
+  },
+
+  "action: open new tab": {
+    "action": "click",
+    "id": "btnNewTab"
+  },
+
+  "action: swap to new tab": {
+    "action": "switch_to_tab",
+    "index": 1
+  },
+
+  "wait: for input on new tab": {
+    "action": "wait_for_element",
+    "id": "edtNewTab"
+  },
+
+  "action: text to edtNewTab": {
+    "action": "type_text",
+    "id": "edtNewTab",
+    "value": "hello world"
+  },
+
+  "wait: wait for edtNewTab change": {
+    "action": "wait_for_value",
+    "id": "edtNewTab",
+    "value": "hello world"
+  },
+
+  "action: swap back to tab 0": {
+    "action": "switch_to_tab",
+    "index": 0
+  },
+
+  "wait: for time": {
+    "action": "wait_for_time"
   }
 }
