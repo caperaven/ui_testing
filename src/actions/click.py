@@ -1,5 +1,3 @@
-import time
-
 from src.elements import get_element
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains

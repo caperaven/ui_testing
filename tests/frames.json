@@ -6,6 +6,10 @@
     "url": "http://127.0.0.1:8000"
   },
 
+  "action: refresh": {
+    "action": "refresh"
+  },
+
   "action: swap to frame": {
     "action": "switch_to_frame",
     "id": "frame"
@@ -69,9 +73,5 @@
   "action: swap back to tab 0": {
     "action": "switch_to_tab",
     "index": 0
-  },
-
-  "wait: for time": {
-    "action": "wait_for_time"
   }
 }
