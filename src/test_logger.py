@@ -6,6 +6,7 @@ class TestLogger:
     """
     move the progress up by one and print the new test.json as defined by id
     """
+
     def step(self, test_id):
         self.progress += 1
 
@@ -14,3 +15,6 @@ class TestLogger:
             count=self.test_count,
             id=test_id
         ))
+
+    def log(self, message):
+        print(message)

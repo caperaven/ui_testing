@@ -6,7 +6,8 @@ from src.data import data
 from src.errors import set_error
 from src.utils import get_name
 from src.wait.conditions import _class_condition, _is_ready_condition, _attribute_condition, _css_condition, \
-    _text_condition, _property_condition, _count_condition, _selected_condition, _element_condition
+    _text_condition, _property_condition, _count_condition, _selected_condition, _element_condition, \
+    _window_count_condition
 
 
 def wait_is_ready(driver, args, results):
@@ -158,6 +159,18 @@ def wait_for_selected(driver, args, results):
     try:
         timeout = args["timeout"] if "timeout" in args else 10
         WebDriverWait(driver, timeout).until(_selected_condition(args, results))
+        results[args["step"]] = "success"
+    except Exception as e:
+        print("wait_for_selected failed, {}".format(e.__class__.__name__))
+        name = get_name(args)
+        set_error(driver, results, args["step"], "error: timeout() - waiting for selected on '{}', {}".format(name, e.__class__.__name__))
+        pass
+
+
+def wait_for_windows(driver, args, results):
+    try:
+        timeout = args["timeout"] if "timeout" in args else 10
+        WebDriverWait(driver, timeout).until(_window_count_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
         print("wait_for_selected failed, {}".format(e.__class__.__name__))

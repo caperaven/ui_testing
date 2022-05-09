@@ -42,6 +42,10 @@ document.getElementById("btnSetClass").addEventListener("click", () => {
     target.classList.add("test");
 })
 
-document.getElementById("btnNewTab"),addEventListener("click", () => {
+document.getElementById("btnNewTab").addEventListener("click", (event) => {
     window.open('/new-tab.html', '_blank');
+})
+
+document.getElementById("btnNewWindow").addEventListener("click", () => {
+    window.open('/new-tab.html', '_blank', "width=200,height=100");
 })

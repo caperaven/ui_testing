@@ -1,0 +1,64 @@
+{
+  "id": "click and wait",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000"
+  },
+
+  "action: open tab": {
+    "action": "click",
+    "id": "btnNewTab"
+  },
+
+  "wait: wait_for_windows: 1": {
+    "action": "wait_for_windows",
+    "count": 2
+  },
+
+  "wait: for 1 second": {
+    "action": "wait_for_time",
+    "timeout": 1
+  },
+
+  "action: close tab": {
+    "action": "close_window",
+    "index": "last"
+  },
+
+  "wait: wait_for_windows: 2": {
+    "action": "wait_for_windows",
+    "count": 1
+  },
+
+  "wait: for 1 (2)": {
+    "action": "wait_for_time",
+    "timeout": 1
+  },
+
+  "action: open window": {
+    "action": "click",
+    "id": "btnNewWindow"
+  },
+
+  "wait_for_windows: 3": {
+    "action": "wait_for_windows",
+    "count": 2
+  },
+
+  "wait: for 1 (3)": {
+    "action": "wait_for_time",
+    "timeout": 1
+  },
+
+  "action: close modal": {
+    "action": "close_window",
+    "index": "last"
+  },
+
+  "wait: for 1 second again - 3": {
+    "action": "wait_for_time",
+    "timeout": 1
+  }
+
+}

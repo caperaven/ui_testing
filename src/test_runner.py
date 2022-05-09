@@ -1,6 +1,6 @@
 from selenium import webdriver
 # actions
-from src.actions.navigate import navigate
+from src.actions.navigate import navigate, close_window
 from src.actions.type import type_text
 from src.actions.click import click, dbl_click, context_click
 from src.actions.switch_to import switch_to_frame, switch_to_default, switch_to_tab
@@ -16,7 +16,8 @@ from src.assertions.assert_tag_name import assert_tag_name_eq, assert_tag_name_n
 from src.assertions.assert_child_count import assert_child_count_eq, assert_child_count_neq
 # components
 from src.wait.components import wait_for_css_class, wait_is_ready, wait_for_attribute, wait_for_css_property, wait_for_text, \
-    wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count, wait_for_value, wait_for_element
+    wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count, wait_for_value, wait_for_element, \
+    wait_for_windows
 import sys
 
 
@@ -57,6 +58,9 @@ class TestRunner:
                 continue
             else:
                 step = json[step_name]
+
+                self.logger.log(step)
+
                 action = step["action"]
                 step["step"] = step_name
 
@@ -77,6 +81,9 @@ class TestRunner:
 
     def navigate(self, step, results):
         navigate(self.driver, step, results)
+
+    def close_window(self, step, results):
+        close_window(self.driver, step, results)
 
     def type_text(self, step, results):
         type_text(self.driver, step, results)
@@ -155,6 +162,9 @@ class TestRunner:
 
     def wait_for_count(self, step, results):
         wait_for_count(self.driver, step, results)
+
+    def wait_for_windows(self, step, results):
+        wait_for_windows(self.driver, step, results)
 
     def assert_style_eq(self, step, results):
         assert_style_eq(self.driver, step, results)

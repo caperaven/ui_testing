@@ -102,6 +102,15 @@ def _selected_condition(args, results):
     return _predicate
 
 
+def _window_count_condition(args, results):
+    def _predicate(driver):
+        count = int(args["count"])
+        length = len(driver.window_handles)
+        return length == count
+
+    return _predicate
+
+
 def _eval(value1, value2, args):
     evaluator = get_eval(args)
 
@@ -114,3 +123,4 @@ def _eval(value1, value2, args):
             return value1 != value2
         case default:
             return value1 == value2
+
