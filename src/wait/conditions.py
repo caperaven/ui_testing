@@ -124,3 +124,11 @@ def _eval(value1, value2, args):
         case default:
             return value1 == value2
 
+
+def _idle_condition(args, results):
+    def _predicate(driver):
+        element = get_element(driver, {"query": "body"}, results)
+        value = element.get_attribute("idle")
+        return value == "true"
+    return _predicate
+

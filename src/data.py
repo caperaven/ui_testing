@@ -5,3 +5,6 @@ data = {
         "idle-true": "if (globalThis.crsbinding != null) {globalThis.crsbinding.idleTaskManager.add(() => document.body.setAttribute('idle', true))} else {document.body.setAttribute('idle', true)}"
     }
 }
+
+state = {
+}

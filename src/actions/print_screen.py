@@ -1,4 +1,5 @@
 import os
+from src.data import state
 
 
 def print_screen(driver, args, results):
@@ -10,6 +11,8 @@ def print_screen(driver, args, results):
     else:
         part = parts[1]
 
-    file = os.path.join(os.getcwd(), "test_results", part)
+    part = part.strip()
+
+    file = os.path.join(state["folder"], part)
     print("saving screen: {}".format(file))
     driver.get_screenshot_as_file(file)

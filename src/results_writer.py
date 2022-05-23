@@ -1,14 +1,23 @@
 from datetime import datetime
+from src.data import state
 import json
 import os
 
 
-def save_results(results, folder):
-    if not os.path.exists(folder):
-        os.mkdir(folder)
-
+def set_results_folder(folder):
     now = datetime.now()
-    file = os.path.realpath(os.path.join(folder, "{}_{}_{}_{}_{}_{}.json".format(now.year, now.month, now.day, now.hour, now.minute, now.second)))
+    date_folder = "{}_{}_{}_{}_{}_{}".format(now.year, now.month, now.day, now.hour, now.minute, now.second)
+    path = os.path.join(folder, date_folder)
+    state["folder"] = path
+
+    if not os.path.exists(path):
+        os.mkdir(path)
+
+
+def save_results(results):
+    path = state["folder"]
+
+    file = os.path.realpath(os.path.join(path, "_result.json"))
 
     outfile = open(file, "w")
     json.dump(results, outfile, indent=4)

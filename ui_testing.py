@@ -9,9 +9,12 @@
 from src.test_loader import TestLoader
 from src.test_runner import TestRunner
 from src.test_logger import TestLogger
-from src.results_writer import save_results
+from src.results_writer import save_results, set_results_folder
 
 import os
+
+folder = os.path.join(os.getcwd(), "test_results")
+set_results_folder(folder)
 
 # Test loader is responsible for:
 # 1. discovering
@@ -38,9 +41,7 @@ while True:
     file = test_loader.current_test_file()
     test_runner.run_test(json, results, file)
 
-folder = os.path.join(os.getcwd(), "test_results")
-
-save_results(results, folder)
+save_results(results)
 
 # clean up memory by disposing of instances
 del test_runner

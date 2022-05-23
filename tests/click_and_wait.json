@@ -6,6 +6,10 @@
     "url": "http://127.0.0.1:8000"
   },
 
+  "wait: wait_until_idle": {
+    "action": "wait_until_idle"
+  },
+
   "action: set attribute": {
     "action": "click",
     "id": "btnSetAttribute"

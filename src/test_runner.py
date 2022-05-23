@@ -17,7 +17,7 @@ from src.assertions.assert_child_count import assert_child_count_eq, assert_chil
 # components
 from src.wait.components import wait_for_css_class, wait_is_ready, wait_for_attribute, wait_for_css_property, wait_for_text, \
     wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count, wait_for_value, wait_for_element, \
-    wait_for_windows
+    wait_for_windows, wait_until_idle
 import sys
 
 
@@ -53,6 +53,11 @@ class TestRunner:
             }
         }
 
+        break_name = None
+        if "--until" in sys.argv:
+            index = sys.argv.index("--until")
+            break_name = sys.argv[index + 1]
+
         for step_name in json:
             if step_name == "id" or "skip." in step_name:
                 continue
@@ -70,6 +75,10 @@ class TestRunner:
                 else:
                     test_results[step_name] = "error: action '{}' not recognised".format(action)
                     test_results["summary"]["error_count"] = test_results["summary"]["error_count"] + 1
+
+            if break_name is not None:
+                if break_name == step_name:
+                    break
 
         if "--root" in sys.argv:
             index = sys.argv.index("--root")
@@ -165,6 +174,9 @@ class TestRunner:
 
     def wait_for_windows(self, step, results):
         wait_for_windows(self.driver, step, results)
+
+    def wait_until_idle(self, step, results):
+        wait_until_idle(self.driver, step, results)
 
     def assert_style_eq(self, step, results):
         assert_style_eq(self.driver, step, results)

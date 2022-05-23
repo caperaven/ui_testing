@@ -7,7 +7,7 @@ from src.errors import set_error
 from src.utils import get_name
 from src.wait.conditions import _class_condition, _is_ready_condition, _attribute_condition, _css_condition, \
     _text_condition, _property_condition, _count_condition, _selected_condition, _element_condition, \
-    _window_count_condition
+    _window_count_condition, _idle_condition
 
 
 def wait_is_ready(driver, args, results):
@@ -23,7 +23,7 @@ def wait_is_ready(driver, args, results):
     if is_ready is not True:
         driver.execute_script(data["scripts"]["is_ready"].format(args["query"]))
         try:
-            timeout = args["timeout"] if "timeout" in args else 10
+            timeout = args["timeout"] if "timeout" in args else 5
             WebDriverWait(driver, timeout).until(_is_ready_condition(args, results))
             results[args["step"]] = "success"
         except Exception as e:
@@ -34,7 +34,7 @@ def wait_is_ready(driver, args, results):
 
 def wait_for_element(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         WebDriverWait(driver, timeout).until(_element_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
@@ -46,7 +46,7 @@ def wait_for_element(driver, args, results):
 
 def wait_for_attribute(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         WebDriverWait(driver, timeout).until(_attribute_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
@@ -58,7 +58,7 @@ def wait_for_attribute(driver, args, results):
 
 def wait_for_css_property(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         WebDriverWait(driver, timeout).until(_css_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
@@ -70,7 +70,7 @@ def wait_for_css_property(driver, args, results):
 
 def wait_for_text(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         WebDriverWait(driver, timeout).until(_text_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
@@ -82,7 +82,7 @@ def wait_for_text(driver, args, results):
 
 def wait_for_value(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         args["attr"] = "value"
         WebDriverWait(driver, timeout).until(_attribute_condition(args, results))
         results[args["step"]] = "success"
@@ -95,7 +95,7 @@ def wait_for_value(driver, args, results):
 
 def wait_for_property(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         WebDriverWait(driver, timeout).until(_property_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
@@ -107,7 +107,7 @@ def wait_for_property(driver, args, results):
 
 def wait_for_css_class(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         WebDriverWait(driver, timeout).until(_class_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
@@ -119,9 +119,9 @@ def wait_for_css_class(driver, args, results):
 
 def wait_for_children(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         query = args["query"]
-        args["query"] = "{} *".format(query)
+        args["query"] = "{} > *".format(query)
         WebDriverWait(driver, timeout).until(_count_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
@@ -133,7 +133,7 @@ def wait_for_children(driver, args, results):
 
 def wait_for_count(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         WebDriverWait(driver, timeout).until(_count_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
@@ -145,7 +145,7 @@ def wait_for_count(driver, args, results):
 
 def wait_for_time(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         time.sleep(timeout)
         results[args["step"]] = "success"
     except Exception as e:
@@ -157,7 +157,7 @@ def wait_for_time(driver, args, results):
 
 def wait_for_selected(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         WebDriverWait(driver, timeout).until(_selected_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
@@ -169,11 +169,24 @@ def wait_for_selected(driver, args, results):
 
 def wait_for_windows(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 10
+        timeout = args["timeout"] if "timeout" in args else 5
         WebDriverWait(driver, timeout).until(_window_count_condition(args, results))
         results[args["step"]] = "success"
     except Exception as e:
         print("wait_for_selected failed, {}".format(e.__class__.__name__))
         name = get_name(args)
         set_error(driver, results, args["step"], "error: timeout() - waiting for selected on '{}', {}".format(name, e.__class__.__name__))
+        pass
+
+
+def wait_until_idle(driver, args, results):
+    try:
+        timeout = args["timeout"] if "timeout" in args else 5
+        driver.execute_script(data["scripts"]["idle-false"])
+        driver.execute_script(data["scripts"]["idle-true"])
+        WebDriverWait(driver, timeout).until(_idle_condition(args, results))
+        results[args["step"]] = "success"
+    except Exception as e:
+        print("wait_until_idle failed, {}".format(e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for idle")
         pass
