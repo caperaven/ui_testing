@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from src.errors import set_error
+from src.data import data
 
 
 def get_element(driver, args, results):
@@ -15,7 +16,12 @@ def get_element(driver, args, results):
 
         if "query" in args:
             name = args["query"]
-            element = driver.find_element(By.CSS_SELECTOR, name)
+            if ":shadow:" in name:
+                parts = name.split(":")
+                parent = driver.find_element(By.CSS_SELECTOR, parts[0])
+                element = parent.shadow_root.find_element(By.CSS_SELECTOR, parts[2])
+            else:
+                element = driver.find_element(By.CSS_SELECTOR, name)
 
         WebDriverWait(driver, 10).until(EC.visibility_of(element))
 

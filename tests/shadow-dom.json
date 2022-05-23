@@ -1,0 +1,34 @@
+{
+  "id": "shadow dom",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000"
+  },
+
+  "action: type text into edtFirstName": {
+    "action": "type_text",
+    "query": "shadow-component:shadow:#edtFirstName",
+    "value": "John"
+  },
+
+  "action: type text into edtLastName": {
+    "action": "type_text",
+    "query": "shadow-component:shadow:#edtLastName",
+    "value": "Doe"
+  },
+
+  "wait: shad-component data-firstname": {
+    "action": "wait_for_attribute",
+    "query": "shadow-component",
+    "attr": "data-firstname",
+    "value": "John"
+  },
+
+  "wait: shad-component data-lastname": {
+    "action": "wait_for_attribute",
+    "query": "shadow-component",
+    "attr": "data-lastname",
+    "value": "Doe"
+  }
+}
