@@ -32,7 +32,10 @@ class TestRunner:
             options.add_argument("-disable-extensions")
             options.add_argument("--auto-open-devtools-for-tabs")
 
-        self.driver = webdriver.Chrome(options=options)
+        if sys.platform == "darwin":
+            self.driver = webdriver.Safari()
+        else:
+            self.driver = webdriver.Chrome(options=options)
 
     def __del__(self):
         self.driver.quit()
