@@ -89,3 +89,9 @@ def context_click(driver, args, results):
         name = get_name(args)
         set_error(driver, results, args["step"], "error: element '{}' not context clickable".format(name))
         pass
+
+
+def click_sequence(driver, args, results):
+    sequence = args.sequence
+    for query in sequence:
+        click(driver, {"query": query}, results)

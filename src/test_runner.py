@@ -2,7 +2,7 @@ from selenium import webdriver
 # actions
 from src.actions.navigate import navigate, close_window
 from src.actions.type import type_text
-from src.actions.click import click, dbl_click, context_click
+from src.actions.click import click, dbl_click, context_click, click_sequence
 from src.actions.switch_to import switch_to_frame, switch_to_default, switch_to_tab
 from src.actions.refresh import refresh
 from src.actions.print_screen import print_screen
@@ -109,6 +109,9 @@ class TestRunner:
 
     def context_click(self, step, results):
         context_click(self.driver, step, results)
+
+    def click_sequence(self, step, results):
+        click_sequence(self.driver, step, results)
 
     def switch_to_frame(self, step, results):
         switch_to_frame(self.driver, step, results)
