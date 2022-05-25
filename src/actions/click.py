@@ -1,4 +1,8 @@
-from src.elements import get_element
+import time
+
+from selenium.common.exceptions import StaleElementReferenceException
+
+from src.elements import get_element, is_stale
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
@@ -34,6 +38,10 @@ def click(driver, args, results):
             action_key_up.perform()
 
         results[args["step"]] = "success"
+    except StaleElementReferenceException:
+        time.sleep(0.25)
+        click(driver, args, results)
+        pass
     except Exception as e:
         print(e)
         name = get_name(args)

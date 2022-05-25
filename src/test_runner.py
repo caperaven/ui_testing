@@ -31,6 +31,7 @@ class TestRunner:
             options.add_argument("start-maximized")
             options.add_argument("-disable-extensions")
             options.add_argument("--auto-open-devtools-for-tabs")
+            options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
         if sys.platform == "darwin":
             self.driver = webdriver.Safari()

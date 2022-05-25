@@ -1,0 +1,54 @@
+{
+    "id": "login",
+
+    "action: navigate": {
+        "action": "navigate",
+        "url": "https://onkeydev.pragmaproducts.com/contoso/daily/"
+    },
+
+    "action: click development_azure_account button": {
+        "action": "click",
+        "query": "li[name='development_azure_account']"
+    },
+
+    "wait: for login tab to open": {
+        "action": "wait_for_windows",
+        "count": 2
+    },
+
+    "action: swap to new tab": {
+        "action": "switch_to_tab",
+        "index": 1
+    },
+
+    "action: fill in user name": {
+        "action": "type_text",
+        "query": "input[name='loginfmt']",
+        "value": "test@pragmadeveloper.onmicrosoft.com"
+    },
+
+    "wait: for password element": {
+        "action": "wait_for_element",
+        "query": "input[name='passwd']"
+    },
+
+    "action: fill in password": {
+        "action": "type_text",
+        "query": "input[name='passwd']",
+        "value": "NtHe7t2EFLqFbM"
+    },
+
+    "action: switch_to_default": {
+        "action": "switch_to_default"
+    },
+
+    "action: click on login button": {
+        "action": "click",
+        "query": "input[type='submit']"
+    },
+
+    "sleep": {
+        "action": "wait_for_time",
+        "timeout":5
+    }
+}

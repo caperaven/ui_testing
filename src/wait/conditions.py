@@ -1,11 +1,24 @@
 from src.elements import get_element
 from src.utils import get_eval
+from selenium.webdriver.common.by import By
 
 
 def _element_condition(args, results):
     def _predicate(driver):
-        element = get_element(driver, args, results)
-        return False if element is None else True
+        try:
+            query = None
+
+            if "id" in args:
+                query = "#{}".format(args["id"])
+            else:
+                query = args["query"]
+
+            element = driver.find_element(By.CSS_SELECTOR, query)
+
+            return False if element is None else True
+
+        except Exception as e:
+            return False
 
     return _predicate
 

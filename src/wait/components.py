@@ -34,13 +34,15 @@ def wait_is_ready(driver, args, results):
 
 def wait_for_element(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 5
+        timeout = args["timeout"] if "timeout" in args else 30
         WebDriverWait(driver, timeout).until(_element_condition(args, results))
         results[args["step"]] = "success"
+        return True
     except Exception as e:
         print("wait_for_element failed, {}".format(e.__class__.__name__))
         name = get_name(args)
         set_error(driver, results, args["step"], "error: timeout() - waiting for element {}".format(name, e.__class__.__name__))
+        return False
         pass
 
 
