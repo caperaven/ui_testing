@@ -3,15 +3,30 @@ import os
 import json
 
 
+def get_file_path(file):
+    if os.path.isabs(file):
+        return file
+    else:
+        return os.path.join(os.getcwd(), file)
+
+
 class TestLoader:
     def __init__(self):
+        self.login = None
         self.files = []
         self.load_file()
         self.load_folder()
         self.next_index = 0
 
+        print(self.files)
+
         filtered = filter(lambda file: "skip." not in file, self.files)
         self.files = list(filtered)
+
+    def load_login(self):
+        if "--login" in sys.argv:
+            index = sys.argv.index("--login")
+            self.files.append(get_file_path(sys.argv[index + 1]))
 
     """
     get file from cmd, if exists, add to tests files to execute
@@ -20,13 +35,8 @@ class TestLoader:
     def load_file(self):
         if "--file" in sys.argv:
             index = sys.argv.index("--file")
-            file = sys.argv[index + 1]
-
-            if os.path.isabs(file):
-                self.files.append(file)
-            else:
-                file = os.path.join(os.getcwd(), file)
-                self.files.append(os.path.realpath(file))
+            self.login = sys.argv[index + 1]
+            self.files.append(get_file_path(self.login))
 
     """
     for a given folder, if defined, get the files tests files to execute    
@@ -46,6 +56,10 @@ class TestLoader:
                 files = os.listdir(folder)
 
                 for file in files:
+                    if file.__contains__("skip."):
+                        continue
+                    if file == self.login:
+                        continue
                     self.files.append(os.path.join(folder, file))
 
     """

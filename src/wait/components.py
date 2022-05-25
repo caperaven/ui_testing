@@ -58,6 +58,25 @@ def wait_for_attribute(driver, args, results):
         pass
 
 
+def wait_for_attributes(driver, args, results):
+    try:
+        timeout = args["timeout"] if "timeout" in args else 30
+        attributes = args["attributes"].keys()
+
+        for attribute in attributes:
+            value = args["attributes"][attribute]
+            args["attr"] = attribute
+            args["value"] = value
+            WebDriverWait(driver, timeout).until(_attribute_condition(args, results))
+
+        results[args["step"]] = "success"
+    except Exception as e:
+        print("wait_for_attribute failed, {}".format(e.__class__.__name__))
+        name = get_name(args)
+        set_error(driver, results, args["step"], "error: timeout() - waiting for attribute on '{}', {}".format(name, e.__class__.__name__))
+        pass
+
+
 def wait_for_css_property(driver, args, results):
     try:
         timeout = args["timeout"] if "timeout" in args else 5

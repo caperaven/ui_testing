@@ -4,6 +4,8 @@ class CustomComponent extends HTMLElement {
 
         requestAnimationFrame(() => {
             setTimeout(() => {
+                this.dataset.ready = "true";
+                this.dataset.loaded = "true";
                 this.isReady = true;
                 this.dispatchEvent(new CustomEvent("isReady"));
             }, 1)

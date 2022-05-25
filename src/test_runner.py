@@ -17,7 +17,7 @@ from src.assertions.assert_child_count import assert_child_count_eq, assert_chil
 # components
 from src.wait.components import wait_for_css_class, wait_is_ready, wait_for_attribute, wait_for_css_property, wait_for_text, \
     wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count, wait_for_value, wait_for_element, \
-    wait_for_windows, wait_until_idle
+    wait_for_windows, wait_until_idle, wait_for_attributes
 import sys
 
 
@@ -184,6 +184,9 @@ class TestRunner:
 
     def wait_until_idle(self, step, results):
         wait_until_idle(self.driver, step, results)
+
+    def wait_for_attributes(self, step, results):
+        wait_for_attributes(self.driver, step, results)
 
     def assert_style_eq(self, step, results):
         assert_style_eq(self.driver, step, results)
