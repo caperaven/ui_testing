@@ -10,10 +10,11 @@ from src.test_loader import TestLoader
 from src.test_runner import TestRunner
 from src.test_logger import TestLogger
 from src.results_writer import save_results, set_results_folder
+import tempfile
 
 import os
 
-folder = os.path.join(os.getcwd(), "test_results")
+folder = tempfile.gettempdir()
 set_results_folder(folder)
 
 # Test loader is responsible for:

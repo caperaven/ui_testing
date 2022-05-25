@@ -13,5 +13,10 @@
       "status": "ready",
       "data-loaded": "true"
     }
+  },
+
+  "print": {
+    "action": "print_screen",
+    "file": "work_orders.png"
   }
 }

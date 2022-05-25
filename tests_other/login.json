@@ -11,7 +11,7 @@
         "query": "li[name='development_azure_account']"
     },
 
-    "wait: for login tab to open": {
+    "wait: for login tab to open two items": {
         "action": "wait_for_windows",
         "count": 2
     },
@@ -52,11 +52,6 @@
         "id": "idSIButton9"
     },
 
-    "wait: for login tab to open": {
-        "action": "wait_for_windows",
-        "count": 1
-    },
-
     "action: switch to default view again": {
         "action": "switch_to_tab",
         "index": 0
@@ -65,5 +60,9 @@
     "wait: wait for main-view": {
         "action": "wait_for_element",
         "id": "main-view"
+    },
+
+    "wait: for idle cpu": {
+        "action": "wait_until_idle"
     }
 }

@@ -54,7 +54,7 @@ def wait_for_attribute(driver, args, results):
     except Exception as e:
         print("wait_for_attribute failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: timeout() - waiting for attribute on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for attribute '{}' to be '{}' on '{}', {}".format(args["attr"], args["value"], name, e.__class__.__name__))
         pass
 
 
