@@ -47,8 +47,23 @@
         "query": "input[type='submit']"
     },
 
-    "sleep": {
-        "action": "wait_for_time",
-        "timeout":5
+    "action: click on remember yes button": {
+        "action": "click",
+        "id": "idSIButton9"
+    },
+
+    "wait: for login tab to open": {
+        "action": "wait_for_windows",
+        "count": 1
+    },
+
+    "action: switch to default view again": {
+        "action": "switch_to_tab",
+        "index": 0
+    },
+
+    "wait: wait for main-view": {
+        "action": "wait_for_element",
+        "id": "main-view"
     }
 }

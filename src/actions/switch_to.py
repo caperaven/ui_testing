@@ -1,5 +1,7 @@
 import time
 
+from selenium.common.exceptions import StaleElementReferenceException
+
 from src.errors import set_error
 from src.elements import get_element
 from src.utils import get_name
@@ -13,6 +15,10 @@ def switch_to_frame(driver, args, results):
 
     try:
         driver.switch_to.frame(element)
+    except StaleElementReferenceException:
+        time.sleep(0.25)
+        switch_to_frame(driver, args, results)
+        pass
     except Exception as e:
         print(e)
         name = get_name(args)
@@ -23,6 +29,10 @@ def switch_to_frame(driver, args, results):
 def switch_to_default(driver, args, results):
     try:
         driver.switch_to.default_content()
+    except StaleElementReferenceException:
+        time.sleep(0.25)
+        switch_to_default(driver, args, results)
+        pass
     except Exception as e:
         print(e)
         set_error(driver, results, args["step"], "error: could not switch to default content")
@@ -34,6 +44,10 @@ def switch_to_tab(driver, args, results):
         time.sleep(1)
         index = args["index"]
         driver.switch_to.window(driver.window_handles[index])
+    except StaleElementReferenceException:
+        time.sleep(0.25)
+        switch_to_tab(driver, args, results)
+        pass
     except Exception as e:
         print(e)
         set_error(driver, results, args["step"], "error: could not swap to tab ({})".format(index))

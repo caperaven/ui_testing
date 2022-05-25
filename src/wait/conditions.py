@@ -6,17 +6,16 @@ from selenium.webdriver.common.by import By
 def _element_condition(args, results):
     def _predicate(driver):
         try:
-            query = None
+            element = get_element(driver, args, results)
 
-            if "id" in args:
-                query = "#{}".format(args["id"])
+            if element is None:
+                return False
+
+            size = element.size
+            if size["width"] == 0 or size["height"] == 0:
+                return False
             else:
-                query = args["query"]
-
-            element = driver.find_element(By.CSS_SELECTOR, query)
-
-            return False if element is None else True
-
+                return True
         except Exception as e:
             return False
 

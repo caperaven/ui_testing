@@ -59,6 +59,10 @@ def dbl_click(driver, args, results):
         action = ActionChains(driver).double_click(element)
         action.perform()
         results[args["step"]] = "success"
+    except StaleElementReferenceException:
+        time.sleep(0.25)
+        dbl_click(driver, args, results)
+        pass
     except Exception as e:
         print(e)
         name = get_name(args)
@@ -76,6 +80,10 @@ def context_click(driver, args, results):
         action = ActionChains(driver).context_click(element)
         action.perform()
         results[args["step"]] = "success"
+    except StaleElementReferenceException:
+        time.sleep(0.25)
+        context_click(driver, args, results)
+        pass
     except Exception as e:
         print(e)
         name = get_name(args)
