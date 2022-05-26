@@ -1,0 +1,27 @@
+{
+  "id": "open asset test",
+
+  "action: navigate to asset browse": {
+
+  },
+
+  "action: find asset a11 in tree": {
+
+  },
+
+  "wait: for asset to be visible": {
+
+  },
+
+  "action: dbl click on asset tree item": {
+
+  },
+
+  "wait: wait for asset edit to open": {
+
+  },
+
+  "assert: check that asset was loaded": {
+
+  }
+}
