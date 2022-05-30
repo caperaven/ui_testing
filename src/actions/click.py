@@ -2,7 +2,7 @@ import time
 
 from selenium.common.exceptions import StaleElementReferenceException
 
-from src.elements import get_element, is_stale
+from src.elements import get_element
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys

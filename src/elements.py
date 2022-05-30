@@ -1,11 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from src.errors import set_error
-from src.data import data
-import time
-
-from src.stale import is_stale
 
 
 def _get_query(args):

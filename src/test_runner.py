@@ -22,8 +22,9 @@ import sys
 
 
 class TestRunner:
-    def __init__(self, logger):
+    def __init__(self, logger, scraper):
         self.logger = logger
+        self.scraper = scraper
 
         options = None
         if sys.argv.__contains__("--debug"):
@@ -42,6 +43,12 @@ class TestRunner:
         self.driver.quit()
         self.logger = None
         self.driver = None
+
+    """
+    run the screen scraper and check for potential issues
+    """
+    def audit(self, step, results):
+        self.scraper.run(self.driver, step, results)
 
     """
     run the given test.json's steps and update the results object
