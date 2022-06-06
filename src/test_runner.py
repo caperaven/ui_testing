@@ -2,7 +2,7 @@ from selenium import webdriver
 # actions
 from src.actions.navigate import navigate, close_window
 from src.actions.type import type_text
-from src.actions.click import click, dbl_click, context_click
+from src.actions.click import click, dbl_click, context_click, click_sequence
 from src.actions.switch_to import switch_to_frame, switch_to_default, switch_to_tab
 from src.actions.refresh import refresh
 from src.actions.print_screen import print_screen
@@ -17,13 +17,14 @@ from src.assertions.assert_child_count import assert_child_count_eq, assert_chil
 # components
 from src.wait.components import wait_for_css_class, wait_is_ready, wait_for_attribute, wait_for_css_property, wait_for_text, \
     wait_for_property, wait_for_children, wait_for_selected, wait_for_time, wait_for_count, wait_for_value, wait_for_element, \
-    wait_for_windows, wait_until_idle
+    wait_for_windows, wait_until_idle, wait_for_attributes
 import sys
 
 
 class TestRunner:
-    def __init__(self, logger):
+    def __init__(self, logger, scraper):
         self.logger = logger
+        self.scraper = scraper
 
         options = None
         if sys.argv.__contains__("--debug"):
@@ -31,13 +32,23 @@ class TestRunner:
             options.add_argument("start-maximized")
             options.add_argument("-disable-extensions")
             options.add_argument("--auto-open-devtools-for-tabs")
+            options.add_experimental_option('excludeSwitches', ['enable-logging'])
 
-        self.driver = webdriver.Chrome(options=options)
+        if sys.platform == "darwin":
+            self.driver = webdriver.Safari()
+        else:
+            self.driver = webdriver.Chrome(options=options)
 
     def __del__(self):
         self.driver.quit()
         self.logger = None
         self.driver = None
+
+    """
+    run the screen scraper and check for potential issues
+    """
+    def audit(self, step, results):
+        self.scraper.run(self.driver, step, results)
 
     """
     run the given test.json's steps and update the results object
@@ -105,6 +116,9 @@ class TestRunner:
 
     def context_click(self, step, results):
         context_click(self.driver, step, results)
+
+    def click_sequence(self, step, results):
+        click_sequence(self.driver, step, results)
 
     def switch_to_frame(self, step, results):
         switch_to_frame(self.driver, step, results)
@@ -177,6 +191,9 @@ class TestRunner:
 
     def wait_until_idle(self, step, results):
         wait_until_idle(self.driver, step, results)
+
+    def wait_for_attributes(self, step, results):
+        wait_for_attributes(self.driver, step, results)
 
     def assert_style_eq(self, step, results):
         assert_style_eq(self.driver, step, results)

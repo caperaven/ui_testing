@@ -34,13 +34,15 @@ def wait_is_ready(driver, args, results):
 
 def wait_for_element(driver, args, results):
     try:
-        timeout = args["timeout"] if "timeout" in args else 5
+        timeout = args["timeout"] if "timeout" in args else 30
         WebDriverWait(driver, timeout).until(_element_condition(args, results))
         results[args["step"]] = "success"
+        return True
     except Exception as e:
         print("wait_for_element failed, {}".format(e.__class__.__name__))
         name = get_name(args)
         set_error(driver, results, args["step"], "error: timeout() - waiting for element {}".format(name, e.__class__.__name__))
+        return False
         pass
 
 
@@ -48,6 +50,25 @@ def wait_for_attribute(driver, args, results):
     try:
         timeout = args["timeout"] if "timeout" in args else 5
         WebDriverWait(driver, timeout).until(_attribute_condition(args, results))
+        results[args["step"]] = "success"
+    except Exception as e:
+        print("wait_for_attribute failed, {}".format(e.__class__.__name__))
+        name = get_name(args)
+        set_error(driver, results, args["step"], "error: timeout() - waiting for attribute '{}' to be '{}' on '{}', {}".format(args["attr"], args["value"], name, e.__class__.__name__))
+        pass
+
+
+def wait_for_attributes(driver, args, results):
+    try:
+        timeout = args["timeout"] if "timeout" in args else 30
+        attributes = args["attributes"].keys()
+
+        for attribute in attributes:
+            value = args["attributes"][attribute]
+            args["attr"] = attribute
+            args["value"] = value
+            WebDriverWait(driver, timeout).until(_attribute_condition(args, results))
+
         results[args["step"]] = "success"
     except Exception as e:
         print("wait_for_attribute failed, {}".format(e.__class__.__name__))

@@ -1,0 +1,22 @@
+{
+  "id": "dashboard test",
+
+  "action: open work orders": {
+    "action": "navigate",
+    "url": "https://onkeydev.pragmaproducts.com/contoso/daily/#dashboard/WorkOrder"
+  },
+
+  "wait: for grid to be loaded": {
+    "action": "wait_for_attributes",
+    "query": "pragma-advanced-grid",
+    "attributes": {
+      "status": "ready",
+      "data-loaded": "true"
+    }
+  },
+
+  "print": {
+    "action": "print_screen",
+    "file": "work_orders.png"
+  }
+}

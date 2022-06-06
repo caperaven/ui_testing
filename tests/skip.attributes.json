@@ -1,0 +1,17 @@
+{
+  "id": "attributes",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000/"
+  },
+
+  "wait: attributes": {
+    "action": "wait_for_attributes",
+    "query": "custom-component",
+    "attributes": {
+      "data-ready": "true",
+      "data-loaded": "true"
+    }
+  }
+}

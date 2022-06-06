@@ -6,12 +6,12 @@ import os
 
 def set_results_folder(folder):
     now = datetime.now()
-    date_folder = "{}_{}_{}_{}_{}_{}".format(now.year, now.month, now.day, now.hour, now.minute, now.second)
+    date_folder = "test_results_{}_{}_{}_{}_{}_{}".format(now.year, now.month, now.day, now.hour, now.minute, now.second)
     path = os.path.join(folder, date_folder)
     state["folder"] = path
 
     if not os.path.exists(path):
-        os.mkdir(path)
+        os.makedirs(path)
 
 
 def save_results(results):
@@ -22,3 +22,6 @@ def save_results(results):
     outfile = open(file, "w")
     json.dump(results, outfile, indent=4)
     outfile.close()
+
+    print("******* results saved *******")
+    print(file)

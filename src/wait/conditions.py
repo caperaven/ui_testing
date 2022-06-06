@@ -1,11 +1,23 @@
 from src.elements import get_element
 from src.utils import get_eval
+from selenium.webdriver.common.by import By
 
 
 def _element_condition(args, results):
     def _predicate(driver):
-        element = get_element(driver, args, results)
-        return False if element is None else True
+        try:
+            element = get_element(driver, args, results)
+
+            if element is None:
+                return False
+
+            size = element.size
+            if size["width"] == 0 or size["height"] == 0:
+                return False
+            else:
+                return True
+        except Exception as e:
+            return False
 
     return _predicate
 

@@ -9,11 +9,13 @@
 from src.test_loader import TestLoader
 from src.test_runner import TestRunner
 from src.test_logger import TestLogger
+from src.test_scraper import TestScraper
 from src.results_writer import save_results, set_results_folder
+import tempfile
 
 import os
 
-folder = os.path.join(os.getcwd(), "test_results")
+folder = tempfile.gettempdir()
 set_results_folder(folder)
 
 # Test loader is responsible for:
@@ -22,12 +24,13 @@ set_results_folder(folder)
 # 3. dishing
 # of test.json files based on commandline arguments
 test_loader = TestLoader()
+test_scraper = TestScraper()
 
 # Test logger prints the current test.json progress based on the number of tests running
 test_logger = TestLogger(len(test_loader.files))
 
 # Test runner executes json intent and populate the results file
-test_runner = TestRunner(test_logger)
+test_runner = TestRunner(test_logger, test_scraper)
 
 # this will hold the test.json results
 results = {}
