@@ -85,7 +85,7 @@ def wait_for_css_property(driver, args, results):
     except Exception as e:
         print("wait_for_css_property failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: timeout() - waiting for css property on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for css property '{}' to be '{}' on '{}', {}".format(args['property'], args['value'], name, e.__class__.__name__))
         pass
 
 
@@ -97,7 +97,7 @@ def wait_for_text(driver, args, results):
     except Exception as e:
         print("wait_for_text failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: timeout() - waiting for text on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for text '{}' on '{}', {}".format(args["value"], name, e.__class__.__name__))
         pass
 
 
@@ -110,7 +110,7 @@ def wait_for_value(driver, args, results):
     except Exception as e:
         print("wait_for_value failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: timeout() - waiting for value on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for value '{}' on '{}', {}".format(args["value"], name, e.__class__.__name__))
         pass
 
 
@@ -122,7 +122,7 @@ def wait_for_property(driver, args, results):
     except Exception as e:
         print("wait_for_property failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: timeout() - waiting for '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for element property '{}' to be '{}' on '{}', {}".format(args['property'], args['value'], name, e.__class__.__name__))
         pass
 
 
@@ -134,7 +134,7 @@ def wait_for_css_class(driver, args, results):
     except Exception as e:
         print("wait_for_css_class failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: timeout() - waiting for '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for css class '{}' on '{}', {}".format(args["class"], name, e.__class__.__name__))
         pass
 
 
@@ -148,7 +148,7 @@ def wait_for_children(driver, args, results):
     except Exception as e:
         print("wait_for_children failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: timeout() - waiting for children on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for child count '{}' on '{}', {}".format(args["count"], name, e.__class__.__name__))
         pass
 
 
@@ -160,7 +160,7 @@ def wait_for_count(driver, args, results):
     except Exception as e:
         print("wait_for_count failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: timeout() - waiting for count on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for element count '{}' on '{}', {}".format(args["count"], name, e.__class__.__name__))
         pass
 
 
@@ -196,7 +196,7 @@ def wait_for_windows(driver, args, results):
     except Exception as e:
         print("wait_for_selected failed, {}".format(e.__class__.__name__))
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: timeout() - waiting for selected on '{}', {}".format(name, e.__class__.__name__))
+        set_error(driver, results, args["step"], "error: timeout() - waiting for window count '{}' on '{}', {}".format(args["count"], name, e.__class__.__name__))
         pass
 
 
