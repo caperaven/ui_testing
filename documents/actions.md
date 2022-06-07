@@ -1,5 +1,11 @@
 ## Actions
 
+### audit
+Scrape the element and it's children to find elements that should have an id or data-id attribute.
+The results object will contain an array for this step with all the element paths that need to be fixed.
+
+1. query
+
 ### navigate
 
 1. url
@@ -49,6 +55,17 @@ None
 ### print_screen
 
 1. file
+
+### press_key
+
+1. id / query
+2. key (uppercase as per https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.common.keys)
+
+### select_option
+
+
+1. id / query
+2. value
 
 ## Wait
 

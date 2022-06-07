@@ -47,7 +47,8 @@ class TestScraper:
         pass
 
 
-required_tag_names = ["input", "button"]
+required_tag_names = ["input", "button", "select", "ul", "textarea"]
+
 roles = [
     "menuitem",
     "scrollbar",

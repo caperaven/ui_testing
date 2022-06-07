@@ -6,6 +6,9 @@ from src.actions.click import click, dbl_click, context_click, click_sequence
 from src.actions.switch_to import switch_to_frame, switch_to_default, switch_to_tab
 from src.actions.refresh import refresh
 from src.actions.print_screen import print_screen
+from src.actions.select_option import select_option
+from src.actions.press_key import press_key
+
 # assertions
 from src.assertions.assert_value import assert_value_eq, assert_value_neq
 from src.assertions.assert_attribute import assert_attr_eq, assert_attr_nq, assert_attributes
@@ -134,6 +137,12 @@ class TestRunner:
 
     def print_screen(self, step, results):
         print_screen(self.driver, step, results)
+
+    def select_option(self, step, results):
+        select_option(self.driver, step, results)
+
+    def press_key(self, step, results):
+        press_key(self.driver, step, results)
 
     def assert_value_eq(self, step, results):
         assert_value_eq(self.driver, step, results)

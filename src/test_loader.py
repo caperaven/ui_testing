@@ -47,20 +47,12 @@ class TestLoader:
             index = sys.argv.index("--folder")
             folder = sys.argv[index + 1]
 
-            if os.path.isabs(folder):
-                files = os.listdir(folder)
-                self.files.append(files)
-            else:
-                folder = os.path.join(os.getcwd(), folder)
-                folder = os.path.realpath(folder)
-                files = os.listdir(folder)
-
-                for file in files:
-                    if file.__contains__("skip."):
-                        continue
-                    if file == self.login:
-                        continue
-                    self.files.append(os.path.join(folder, file))
+            for root, dirnames, filenames in os.walk(folder):
+                folder = os.path.realpath(root)
+                for filename in filenames:
+                    file = os.path.join(folder, filename)
+                    if not file.__contains__("skip."):
+                        self.files.append(file)
 
     """
     call this function to load the next test.json file as JSON and pass back the JSON object

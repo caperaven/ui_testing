@@ -7,5 +7,5 @@ def refresh(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        set_error(driver, results, args["step"], "error: refresh failed".format())
+        set_error(driver, results, args["step"], "error: refresh failed, '{}'".format(e))
         pass

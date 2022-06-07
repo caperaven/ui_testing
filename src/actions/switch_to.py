@@ -22,7 +22,7 @@ def switch_to_frame(driver, args, results):
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: could not switch to frame '{}'".format(name))
+        set_error(driver, results, args["step"], "error: could not switch to frame '{}', '{}'".format(name, e))
         pass
 
 
@@ -35,7 +35,7 @@ def switch_to_default(driver, args, results):
         pass
     except Exception as e:
         print(e)
-        set_error(driver, results, args["step"], "error: could not switch to default content")
+        set_error(driver, results, args["step"], "error: could not switch to default content, '{}'".format(e))
         pass
 
 
@@ -50,5 +50,5 @@ def switch_to_tab(driver, args, results):
         pass
     except Exception as e:
         print(e)
-        set_error(driver, results, args["step"], "error: could not swap to tab ({})".format(index))
+        set_error(driver, results, args["step"], "error: could not swap to tab ({}), {}".format(index, e))
         pass

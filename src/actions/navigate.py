@@ -39,5 +39,5 @@ def close_window(driver, args, results):
         results[args["step"]] = "success"
     except Exception as e:
         print(e)
-        set_error(driver, results, args["step"], "error: could not close window at ({})".format(index))
+        set_error(driver, results, args["step"], "error: could not close window at ({}), '{}'".format(index, e))
         pass

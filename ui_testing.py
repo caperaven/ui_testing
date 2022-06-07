@@ -6,12 +6,18 @@
 # --folder c:\\tests
 # --folder ./../tests
 
+# Additional flags
+# --auto-open = open test folder when tests are done
+
+from src.data import state
 from src.test_loader import TestLoader
 from src.test_runner import TestRunner
 from src.test_logger import TestLogger
 from src.test_scraper import TestScraper
 from src.results_writer import save_results, set_results_folder
+import sys
 import tempfile
+import subprocess
 
 import os
 
@@ -45,6 +51,11 @@ while True:
     test_runner.run_test(json, results, file)
 
 save_results(results)
+
+if "--auto-open" in sys.argv:
+    path = state["folder"]
+    subprocess.Popen(r'explorer /open,"{}"'.format(path))
+    pass
 
 # clean up memory by disposing of instances
 del test_runner
