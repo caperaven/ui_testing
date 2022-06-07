@@ -1,3 +1,6 @@
+#https://www.jetbrains.com/help/teamcity/service-messages.html#Enabling+Test+Retry
+#https://github.com/travisjeffery/mocha-teamcity-reporter/blob/master/lib/teamcity.js
+
 class TestLogger:
     def __init__(self, test_count):
         self.test_count = test_count

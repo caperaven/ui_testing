@@ -8,7 +8,7 @@
   "action: change select to v3": {
     "action": "select_option",
     "id": "cbSelect",
-    "value": "v5"
+    "value": "v3"
   },
 
   "assert: cb value": {
