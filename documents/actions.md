@@ -64,10 +64,7 @@ None
 ### select_option
 
 1. id / query
-2. value (optional - value attribute to use)
-3. text (optional - text value of the option element)
-
-Best practice is to use the value but, you must provide either value or text
+2. value
 
 ## Wait
 
