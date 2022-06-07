@@ -14,10 +14,7 @@ def select_option(driver, args, results):
             return
 
         select = Select(element)
-        if args["value"] is not None:
-            select.select_by_value(args["value"])
-        else:
-            select.select_by_visible_text(args["text"])
+        select.select_by_value(args["value"])
     except StaleElementReferenceException:
         time.sleep(0.25)
         select_option(driver, args, results)

@@ -23,5 +23,5 @@ def press_key(driver, args, results):
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: could not press key on '{}', message: '{}'".format(name, e))
+        set_error(driver, results, args["step"], "error: could not press key '{}' on '{}', message: '{}'".format(args["key"], name, e))
         pass
