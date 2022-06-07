@@ -1,10 +1,7 @@
 import time
-
 from selenium.common.exceptions import StaleElementReferenceException
-
 from src.elements import get_element
 from selenium.webdriver.common.keys import Keys
-
 from src.errors import set_error
 from src.utils import get_name
 
@@ -30,5 +27,5 @@ def type_text(driver, args, results):
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: element '{}' not context clickable".format(name))
+        set_error(driver, results, args["step"], "error: element '{}' not context clickable, '{}'".format(name, e))
         pass

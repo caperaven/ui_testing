@@ -1,0 +1,20 @@
+{
+  "id": "select",
+  "action: navigate": {
+    "action": "navigate",
+    "url": "http://127.0.0.1:8000/"
+  },
+
+  "action: change select to v3": {
+    "action": "select_option",
+    "id": "cbSelect",
+    "value": "v3"
+  },
+
+  "assert: cb value": {
+    "action": "wait_for_value",
+    "id": "cbSelect",
+    "attr":  "value",
+    "value": "v3"
+  }
+}
