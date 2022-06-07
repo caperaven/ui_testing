@@ -16,5 +16,31 @@
     "id": "cbSelect",
     "attr":  "value",
     "value": "v3"
+  },
+
+  "action: arrow key up": {
+    "action": "press_key",
+    "id": "cbSelect",
+    "key": "ARROW_UP"
+  },
+
+  "assert: cb value 2": {
+    "action": "wait_for_value",
+    "id": "cbSelect",
+    "attr":  "value",
+    "value": "v2"
+  },
+
+    "action: arrow key down": {
+    "action": "press_key",
+    "id": "cbSelect",
+    "key": "ARROW_DOWN"
+  },
+
+  "assert: cb value 3": {
+    "action": "wait_for_value",
+    "id": "cbSelect",
+    "attr":  "value",
+    "value": "v3"
   }
 }

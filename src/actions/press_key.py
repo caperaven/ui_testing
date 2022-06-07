@@ -3,6 +3,7 @@ from selenium.common.exceptions import StaleElementReferenceException
 from src.elements import get_element
 from src.errors import set_error
 from src.utils import get_name
+from selenium.webdriver.common.keys import Keys
 
 
 def press_key(driver, args, results):
@@ -12,6 +13,9 @@ def press_key(driver, args, results):
         if element is None:
             return
 
+        key_value = args["key"]
+        key = getattr(Keys, key_value)
+        element.send_keys(key)
     except StaleElementReferenceException:
         time.sleep(0.25)
         press_key(driver, args, results)

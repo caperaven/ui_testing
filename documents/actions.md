@@ -50,6 +50,19 @@ None
 
 1. file
 
+### press_key
+
+1. id / query
+2. key (uppercase as per https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.common.keys)
+
+### select_option
+
+1. id / query
+2. value (optional - value attribute to use)
+3. text (optional - text value of the option element)
+
+Best practice is to use the value but, you must provide either value or text
+
 ## Wait
 
 ### wait_for_element
