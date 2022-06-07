@@ -1,5 +1,11 @@
 ## Actions
 
+### audit
+Scrape the element and it's children to find elements that should have an id or data-id attribute.
+The results object will contain an array for this step with all the element paths that need to be fixed.
+
+1. query
+
 ### navigate
 
 1. url
