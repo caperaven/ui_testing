@@ -11,7 +11,7 @@ from src.utils import get_name
 from src.wait.conditions import _is_enabled_condition
 
 
-def click(driver, args, results):
+async def click(driver, args, results):
     element = get_element(driver, args, results)
 
     if element is None:
@@ -40,16 +40,16 @@ def click(driver, args, results):
         results[args["step"]] = "success"
     except StaleElementReferenceException:
         time.sleep(0.25)
-        click(driver, args, results)
+        await click(driver, args, results)
         pass
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: element '{}' not clickable, '{}'".format(name, e))
+        await set_error(driver, results, args["step"], "error: element '{}' not clickable, '{}'".format(name, e))
         pass
 
 
-def dbl_click(driver, args, results):
+async def dbl_click(driver, args, results):
     element = get_element(driver, args, results)
 
     if element is None:
@@ -61,16 +61,16 @@ def dbl_click(driver, args, results):
         results[args["step"]] = "success"
     except StaleElementReferenceException:
         time.sleep(0.25)
-        dbl_click(driver, args, results)
+        await dbl_click(driver, args, results)
         pass
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: element '{}' not dbl clickable, '{}'".format(name, e))
+        await set_error(driver, results, args["step"], "error: element '{}' not dbl clickable, '{}'".format(name, e))
         pass
 
 
-def context_click(driver, args, results):
+async def context_click(driver, args, results):
     element = get_element(driver, args, results)
 
     if element is None:
@@ -82,16 +82,16 @@ def context_click(driver, args, results):
         results[args["step"]] = "success"
     except StaleElementReferenceException:
         time.sleep(0.25)
-        context_click(driver, args, results)
+        await context_click(driver, args, results)
         pass
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: element '{}' not context clickable, '{}'".format(name, e))
+        await set_error(driver, results, args["step"], "error: element '{}' not context clickable, '{}'".format(name, e))
         pass
 
 
-def click_sequence(driver, args, results):
+async def click_sequence(driver, args, results):
     sequence = args.sequence
     for query in sequence:
-        click(driver, {"query": query}, results)
+        await click(driver, {"query": query}, results)

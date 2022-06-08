@@ -3,7 +3,7 @@ from src.errors import set_error
 from src.utils import get_name
 
 
-def assert_attributes(driver, args, results):
+async def assert_attributes(driver, args, results):
     element = get_element(driver, args, results)
     attributes = args["attributes"]
 
@@ -15,7 +15,7 @@ def assert_attributes(driver, args, results):
 
         if value != exp_value:
             success = False
-            set_error(driver, results, args["step"],
+            await set_error(driver, results, args["step"],
                 "error: attribute '{}' on '{}' should have been '{}' but was '{}'".format(attr, name, exp_value, value))
             break
 
@@ -23,7 +23,7 @@ def assert_attributes(driver, args, results):
         results[args["step"]] = "success"
 
 
-def assert_attr_eq(driver, args, results):
+async def assert_attr_eq(driver, args, results):
     element = get_element(driver, args, results)
 
     if element is None:
@@ -36,10 +36,10 @@ def assert_attr_eq(driver, args, results):
         results[args["step"]] = "success"
     else:
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: attribute '{}' on '{}' should have been '{}' but was '{}'".format(args["attr"], name, exp_value, value))
+        await set_error(driver, results, args["step"], "error: attribute '{}' on '{}' should have been '{}' but was '{}'".format(args["attr"], name, exp_value, value))
 
 
-def assert_attr_nq(driver, args, results):
+async def assert_attr_nq(driver, args, results):
     element = get_element(driver, args, results)
 
     if element is None:
@@ -50,6 +50,6 @@ def assert_attr_nq(driver, args, results):
 
     if value == exp_value:
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: attribute '{}' on '{}' should NOT have been '{}'".format(args["attr"], name, exp_value))
+        await set_error(driver, results, args["step"], "error: attribute '{}' on '{}' should NOT have been '{}'".format(args["attr"], name, exp_value))
     else:
         results[args["step"]] = "success"

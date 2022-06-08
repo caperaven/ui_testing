@@ -1,6 +1,5 @@
 from src.elements import get_element
 from src.utils import get_eval
-from selenium.webdriver.common.by import By
 
 
 def _element_condition(args, results):

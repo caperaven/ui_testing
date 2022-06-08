@@ -1,6 +1,5 @@
 from src.elements import get_element
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.shadowroot import ShadowRoot
 from src.utils import has_shadow_root
 
 ignore_tag_names = ["style", "text", "svg", "label", "slot"]
@@ -11,7 +10,7 @@ class TestScraper:
         self.path = None
         self.results = None
 
-    def run(self, driver, args, results):
+    async def run(self, driver, args, results):
         self.args = args
         start = args["query"]
         self.path = [start]

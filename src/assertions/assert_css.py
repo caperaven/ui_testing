@@ -3,7 +3,7 @@ from src.errors import set_error
 from src.utils import get_name
 
 
-def assert_style_eq(driver, args, results):
+async def assert_style_eq(driver, args, results):
     element = get_element(driver, args, results)
 
     if element is None:
@@ -17,10 +17,10 @@ def assert_style_eq(driver, args, results):
         results[args["step"]] = "success"
     else:
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: css property '{}' on '{}' should have been '{}' but was '{}'".format(prop, name, exp_value, value))
+        await set_error(driver, results, args["step"], "error: css property '{}' on '{}' should have been '{}' but was '{}'".format(prop, name, exp_value, value))
 
 
-def assert_style_neq(driver, args, results):
+async def assert_style_neq(driver, args, results):
     element = get_element(driver, args, results)
 
     if element is None:
@@ -32,6 +32,6 @@ def assert_style_neq(driver, args, results):
 
     if value == exp_value:
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: css property '{}' on '{}' should NOT have been '{}'".format(prop, name, exp_value, value))
+        await set_error(driver, results, args["step"], "error: css property '{}' on '{}' should NOT have been '{}'".format(prop, name, exp_value, value))
     else:
         results[args["step"]] = "success"

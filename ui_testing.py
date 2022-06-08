@@ -18,6 +18,7 @@ from src.results_writer import save_results, set_results_folder
 import sys
 import tempfile
 import subprocess
+import asyncio
 
 import os
 
@@ -41,24 +42,26 @@ test_runner = TestRunner(test_logger, test_scraper)
 # this will hold the test.json results
 results = {}
 
+
 # loop through the tests and execute them
-while True:
-    json = test_loader.next_test()
-    if json is None:
-        break
 
-    file = test_loader.current_test_file()
-    test_runner.run_test(json, results, file)
+async def run_tests():
+    while True:
+        json = test_loader.next_test()
+        if json is None:
+            break
 
-save_results(results)
+        file = test_loader.current_test_file()
+        await test_runner.run_test(json, results, file)
+    save_results(results)
+
+asyncio.run(run_tests())
 
 if "--auto-open" in sys.argv:
     path = state["folder"]
     subprocess.Popen(r'explorer /open,"{}"'.format(path))
     pass
 
-# clean up memory by disposing of instances
 del test_runner
 del test_logger
 del test_loader
-

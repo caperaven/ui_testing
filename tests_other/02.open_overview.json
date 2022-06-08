@@ -1,0 +1,33 @@
+{
+  "id": "open_workorder_overview",
+
+  "action: navigate": {
+    "action": "navigate",
+    "url": "https://onkeydev.pragmaproducts.com/contoso/daily/#dashboard/WorkOrder"
+  },
+
+  "wait: for idle cpu": {
+    "action": "wait_until_idle"
+  },
+
+  "wait: for dashboard-grid to be ready": {
+    "action": "wait_for_attribute",
+    "id": "dashboard-grid",
+    "attr": "status",
+    "value": "ready",
+    "timeout": 30
+  },
+
+  "click: btnOverview": {
+    "action": "click",
+    "id": "btnOverview"
+  },
+
+  "wait: right panel to open": {
+    "action": "wait_for_attribute",
+    "query": ".dashboard [slot='right'] pragma-pager",
+    "attr": "status",
+    "value": "ready",
+    "timeout": 30
+  }
+}

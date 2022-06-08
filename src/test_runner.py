@@ -50,13 +50,13 @@ class TestRunner:
     """
     run the screen scraper and check for potential issues
     """
-    def audit(self, step, results):
-        self.scraper.run(self.driver, step, results)
+    async def audit(self, step, results):
+        await self.scraper.run(self.driver, step, results)
 
     """
     run the given test.json's steps and update the results object
     """
-    def run_test(self, json, results, file):
+    async def run_test(self, json, results, file):
         self.logger.step(json["id"])
 
         test_results = results[json["id"]] = {
@@ -85,7 +85,7 @@ class TestRunner:
 
                 self_attr = getattr(self, action, None)
                 if callable(self_attr):
-                    self_attr(step, test_results)
+                    await self_attr(step, test_results)
                 else:
                     test_results[step_name] = "error: action '{}' not recognised".format(action)
                     test_results["summary"]["error_count"] = test_results["summary"]["error_count"] + 1
@@ -102,134 +102,134 @@ class TestRunner:
                 "url": url
             }, test_results)
 
-    def navigate(self, step, results):
-        navigate(self.driver, step, results)
+    async def navigate(self, step, results):
+        await navigate(self.driver, step, results)
 
-    def close_window(self, step, results):
-        close_window(self.driver, step, results)
+    async def close_window(self, step, results):
+        await close_window(self.driver, step, results)
 
-    def type_text(self, step, results):
-        type_text(self.driver, step, results)
+    async def type_text(self, step, results):
+        await type_text(self.driver, step, results)
 
-    def click(self, step, results):
-        click(self.driver, step, results)
+    async def click(self, step, results):
+        await click(self.driver, step, results)
 
-    def dbl_click(self, step, results):
-        dbl_click(self.driver, step, results)
+    async def dbl_click(self, step, results):
+        await dbl_click(self.driver, step, results)
 
-    def context_click(self, step, results):
-        context_click(self.driver, step, results)
+    async def context_click(self, step, results):
+        await context_click(self.driver, step, results)
 
-    def click_sequence(self, step, results):
-        click_sequence(self.driver, step, results)
+    async def click_sequence(self, step, results):
+        await click_sequence(self.driver, step, results)
 
-    def switch_to_frame(self, step, results):
-        switch_to_frame(self.driver, step, results)
+    async def switch_to_frame(self, step, results):
+        await switch_to_frame(self.driver, step, results)
 
-    def switch_to_default(self, step, results):
-        switch_to_default(self.driver, step, results)
+    async def switch_to_default(self, step, results):
+        await switch_to_default(self.driver, step, results)
 
-    def switch_to_tab(self, step, results):
-        switch_to_tab(self.driver, step, results)
+    async def switch_to_tab(self, step, results):
+        await switch_to_tab(self.driver, step, results)
 
-    def refresh(self, step, results):
-        refresh(self.driver, step, results)
+    async def refresh(self, step, results):
+        await refresh(self.driver, step, results)
 
-    def print_screen(self, step, results):
-        print_screen(self.driver, step, results)
+    async def print_screen(self, step, results):
+        await print_screen(self.driver, step, results)
 
-    def select_option(self, step, results):
-        select_option(self.driver, step, results)
+    async def select_option(self, step, results):
+        await select_option(self.driver, step, results)
 
-    def press_key(self, step, results):
-        press_key(self.driver, step, results)
+    async def press_key(self, step, results):
+        await press_key(self.driver, step, results)
 
-    def assert_value_eq(self, step, results):
-        assert_value_eq(self.driver, step, results)
+    async def assert_value_eq(self, step, results):
+        await assert_value_eq(self.driver, step, results)
 
-    def assert_value_neq(self, step, results):
-        assert_value_neq(self.driver, step, results)
+    async def assert_value_neq(self, step, results):
+        await assert_value_neq(self.driver, step, results)
 
-    def assert_attr_eq(self, step, results):
-        assert_attr_eq(self.driver, step, results)
+    async def assert_attr_eq(self, step, results):
+        await assert_attr_eq(self.driver, step, results)
 
-    def assert_attr_nq(self, step, results):
-        assert_attr_nq(self.driver, step, results)
+    async def assert_attr_nq(self, step, results):
+        await assert_attr_nq(self.driver, step, results)
 
-    def assert_attributes(self, step, results):
-        assert_attributes(self.driver, step, results)
+    async def assert_attributes(self, step, results):
+        await assert_attributes(self.driver, step, results)
 
-    def wait_for_element(self, step, results):
-        wait_for_element(self.driver, step, results)
+    async def wait_for_element(self, step, results):
+        await wait_for_element(self.driver, step, results)
 
-    def wait_is_ready(self, step, results):
-        wait_is_ready(self.driver, step, results)
+    async def wait_is_ready(self, step, results):
+        await wait_is_ready(self.driver, step, results)
 
-    def wait_for_attribute(self, step, results):
-        wait_for_attribute(self.driver, step, results)
+    async def wait_for_attribute(self, step, results):
+        await wait_for_attribute(self.driver, step, results)
 
-    def wait_for_css_property(self, step, results):
-        wait_for_css_property(self.driver, step, results)
+    async def wait_for_css_property(self, step, results):
+        await wait_for_css_property(self.driver, step, results)
 
-    def wait_for_text(self, step, results):
-        wait_for_text(self.driver, step, results)
+    async def wait_for_text(self, step, results):
+        await wait_for_text(self.driver, step, results)
 
-    def wait_for_value(self, step, results):
-        wait_for_value(self.driver, step, results)
+    async def wait_for_value(self, step, results):
+        await wait_for_value(self.driver, step, results)
 
-    def wait_for_property(self, step, results):
-        wait_for_property(self.driver, step, results)
+    async def wait_for_property(self, step, results):
+        await wait_for_property(self.driver, step, results)
 
-    def wait_for_css_class(self, step, results):
-        wait_for_css_class(self.driver, step, results)
+    async def wait_for_css_class(self, step, results):
+        await wait_for_css_class(self.driver, step, results)
 
-    def wait_for_children(self, step, results):
-        wait_for_children(self.driver, step, results)
+    async def wait_for_children(self, step, results):
+        await wait_for_children(self.driver, step, results)
 
-    def wait_for_selected(self, step, results):
-        wait_for_selected(self.driver, step, results)
+    async def wait_for_selected(self, step, results):
+        await wait_for_selected(self.driver, step, results)
 
-    def wait_for_time(self, step, results):
-        wait_for_time(self.driver, step, results)
+    async def wait_for_time(self, step, results):
+        await wait_for_time(self.driver, step, results)
 
-    def wait_for_count(self, step, results):
-        wait_for_count(self.driver, step, results)
+    async def wait_for_count(self, step, results):
+        await wait_for_count(self.driver, step, results)
 
-    def wait_for_windows(self, step, results):
-        wait_for_windows(self.driver, step, results)
+    async def wait_for_windows(self, step, results):
+        await wait_for_windows(self.driver, step, results)
 
-    def wait_until_idle(self, step, results):
-        wait_until_idle(self.driver, step, results)
+    async def wait_until_idle(self, step, results):
+        await wait_until_idle(self.driver, step, results)
 
-    def wait_for_attributes(self, step, results):
-        wait_for_attributes(self.driver, step, results)
+    async def wait_for_attributes(self, step, results):
+        await wait_for_attributes(self.driver, step, results)
 
-    def assert_style_eq(self, step, results):
-        assert_style_eq(self.driver, step, results)
+    async def assert_style_eq(self, step, results):
+        await assert_style_eq(self.driver, step, results)
 
-    def assert_style_neq(self, step, results):
-        assert_style_neq(self.driver, step, results)
+    async def assert_style_neq(self, step, results):
+        await assert_style_neq(self.driver, step, results)
 
-    def assert_text_eq(self, step, results):
-        assert_text_eq(self.driver, step, results)
+    async def assert_text_eq(self, step, results):
+        await assert_text_eq(self.driver, step, results)
 
-    def assert_text_neq(self, step, results):
-        assert_text_neq(self.driver, step, results)
+    async def assert_text_neq(self, step, results):
+        await assert_text_neq(self.driver, step, results)
 
-    def assert_property_eq(self, step, results):
-        assert_property_eq(self.driver, step, results)
+    async def assert_property_eq(self, step, results):
+        await assert_property_eq(self.driver, step, results)
 
-    def assert_property_neq(self, step, results):
-        assert_property_neq(self.driver, step, results)
+    async def assert_property_neq(self, step, results):
+        await assert_property_neq(self.driver, step, results)
 
-    def assert_tag_name_eq(self, step, results):
-        assert_tag_name_eq(self.driver, step, results)
+    async def assert_tag_name_eq(self, step, results):
+        await assert_tag_name_eq(self.driver, step, results)
 
-    def assert_tag_name_neq(self, step, results):
-        assert_tag_name_neq(self.driver, step, results)
+    async def assert_tag_name_neq(self, step, results):
+        await assert_tag_name_neq(self.driver, step, results)
 
-    def assert_child_count_eq(self, step, results):
-        assert_child_count_eq(self.driver, step, results)
+    async def assert_child_count_eq(self, step, results):
+        await assert_child_count_eq(self.driver, step, results)
 
-    def assert_child_count_neq(self, step, results):
-        assert_child_count_neq(self.driver, step, results)
+    async def assert_child_count_neq(self, step, results):
+        await assert_child_count_neq(self.driver, step, results)

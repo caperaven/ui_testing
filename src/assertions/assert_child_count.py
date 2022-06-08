@@ -2,7 +2,7 @@ from src.errors import set_error
 from src.utils import get_name
 
 
-def assert_child_count_eq(driver, args, results):
+async def assert_child_count_eq(driver, args, results):
     query = "{} *".format(args["query"])
     count = args["count"]
 
@@ -13,10 +13,10 @@ def assert_child_count_eq(driver, args, results):
         results[args["step"]] = "success"
     else:
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: child count on '{}' should have been '{}' but was '{}'".format(name, count, act_count))
+        await set_error(driver, results, args["step"], "error: child count on '{}' should have been '{}' but was '{}'".format(name, count, act_count))
 
 
-def assert_child_count_neq(driver, args, results):
+async def assert_child_count_neq(driver, args, results):
     query = "{} *".format(args["query"])
     count = args["count"]
 
@@ -27,5 +27,5 @@ def assert_child_count_neq(driver, args, results):
         results[args["step"]] = "success"
     else:
         name = get_name(args)
-        set_error(driver, results, args["step"],
+        await set_error(driver, results, args["step"],
                   "error: child count on '{}' should NOT have been '{}' but was".format(name, count))

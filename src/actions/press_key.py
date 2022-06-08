@@ -6,7 +6,7 @@ from src.utils import get_name
 from selenium.webdriver.common.keys import Keys
 
 
-def press_key(driver, args, results):
+async def press_key(driver, args, results):
     try:
         element = get_element(driver, args, results)
 
@@ -18,10 +18,10 @@ def press_key(driver, args, results):
         element.send_keys(key)
     except StaleElementReferenceException:
         time.sleep(0.25)
-        press_key(driver, args, results)
+        await press_key(driver, args, results)
         pass
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: could not press key '{}' on '{}', message: '{}'".format(args["key"], name, e))
+        await set_error(driver, results, args["step"], "error: could not press key '{}' on '{}', message: '{}'".format(args["key"], name, e))
         pass

@@ -2,7 +2,7 @@ import os
 from src.data import state
 
 
-def print_screen(driver, args, results):
+async def print_screen(driver, args, results):
     parts = args["file"].split(":")
 
     part = None

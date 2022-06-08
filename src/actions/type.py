@@ -6,7 +6,7 @@ from src.errors import set_error
 from src.utils import get_name
 
 
-def type_text(driver, args, results):
+async def type_text(driver, args, results):
     try:
         value = args["value"]
         element = get_element(driver, args, results)
@@ -22,10 +22,10 @@ def type_text(driver, args, results):
         results[args["step"]] = "success"
     except StaleElementReferenceException:
         time.sleep(0.25)
-        type_text(driver, args, results)
+        await type_text(driver, args, results)
         pass
     except Exception as e:
         print(e)
         name = get_name(args)
-        set_error(driver, results, args["step"], "error: element '{}' not context clickable, '{}'".format(name, e))
+        await set_error(driver, results, args["step"], "error: element '{}' not context clickable, '{}'".format(name, e))
         pass
