@@ -11,3 +11,15 @@ def get_eval(args):
         return args["eval"]
     else:
         return None
+
+
+def has_shadow_root(element):
+    result = True
+    try:
+        root = element.shadow_root
+        if root is None:
+            result = False
+    except Exception as e:
+        result = False
+
+    return result

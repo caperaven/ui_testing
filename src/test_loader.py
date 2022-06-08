@@ -14,6 +14,7 @@ class TestLoader:
     def __init__(self):
         self.login = None
         self.files = []
+        self.load_login()
         self.load_file()
         self.load_folder()
         self.next_index = 0
@@ -26,7 +27,8 @@ class TestLoader:
     def load_login(self):
         if "--login" in sys.argv:
             index = sys.argv.index("--login")
-            self.files.append(get_file_path(sys.argv[index + 1]))
+            self.login = get_file_path(sys.argv[index + 1])
+            self.files.append(self.login)
 
     """
     get file from cmd, if exists, add to tests files to execute
@@ -51,7 +53,7 @@ class TestLoader:
                 folder = os.path.realpath(root)
                 for filename in filenames:
                     file = os.path.join(folder, filename)
-                    if not file.__contains__("skip."):
+                    if not file.__contains__("skip.") and file != self.login:
                         self.files.append(file)
 
     """

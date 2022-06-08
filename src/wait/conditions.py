@@ -100,8 +100,9 @@ def _count_condition(args, results):
         query = args["query"]
         count = args["count"]
         all_children_by_css = driver.find_elements_by_css_selector(query)
-        return len(all_children_by_css) == count
 
+        count_value = len(all_children_by_css)
+        return _eval(count_value, count, args)
     return _predicate
 
 
