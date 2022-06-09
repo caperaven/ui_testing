@@ -29,17 +29,17 @@ class TestRunner:
         self.logger = logger
         self.scraper = scraper
 
-        options = None
-        if sys.argv.__contains__("--debug"):
-            options = webdriver.ChromeOptions()
-            options.add_argument("start-maximized")
-            options.add_argument("-disable-extensions")
-            options.add_argument("--auto-open-devtools-for-tabs")
-            options.add_experimental_option('excludeSwitches', ['enable-logging'])
-
         if sys.platform == "darwin":
             self.driver = webdriver.Safari()
         else:
+            options = webdriver.ChromeOptions()
+            options.add_argument("start-maximized")
+
+            if sys.argv.__contains__("--debug"):
+                options.add_argument("-disable-extensions")
+                options.add_argument("--auto-open-devtools-for-tabs")
+                options.add_experimental_option('excludeSwitches', ['enable-logging'])
+
             self.driver = webdriver.Chrome(options=options)
 
     def __del__(self):
