@@ -1,0 +1,28 @@
+{
+  "id": "fill in user data",
+
+  "parameters_def": {
+    "first_name": {
+      "required": false,
+      "default": "John"
+    }
+  },
+
+  "action: fill in user": {
+    "action": "type_text",
+    "id": "edtFirstName",
+    "value": "$parameter.first_name"
+  },
+
+  "action: fill in user": {
+    "action": "type_text",
+    "id": "edtLastName",
+    "value": "$lastName"
+  },
+
+  "action: fill in user": {
+    "action": "type_text",
+    "id": "edtAge",
+    "value": "$age"
+  }
+}

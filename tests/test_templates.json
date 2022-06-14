@@ -1,0 +1,20 @@
+{
+  "id": "test_templates",
+
+
+  "": {
+    "action": "navigate",
+    "url": ""
+  },
+
+
+  "template: fill in user": {
+    "action": "template",
+    "template": "fill_in_user",
+    "parameters": {
+      "first_name": "Jonny",
+      "last_name": "Bravo",
+      "age": 30
+    }
+  }
+}

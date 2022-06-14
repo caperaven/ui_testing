@@ -9,3 +9,14 @@ data = {
 
 state = {
 }
+
+variables = {
+}
+
+def set_variable(name, value):
+    variables[name] = value
+
+
+def get_variable(name, default=None):
+    result = variables[name]
+    return result if result is not None else default
